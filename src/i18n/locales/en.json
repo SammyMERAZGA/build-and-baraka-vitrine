@@ -1,0 +1,275 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Build and Baraka",
+    "subtitle": "The complete Muslim mobile application",
+    "description": "Discover an application dedicated to Muslims with all the essential Islamic tools: prayer times, prophet stories, duas, and much more.",
+    "downloadTitle": "Download the Build and Baraka app on:",
+    "googlePlay": "Google Play",
+    "appStore": "App Store"
+  },
+  "features": {
+    "title": "Main Features",
+    "prayer": {
+      "title": "Prayer Times",
+      "description": "Check accurate prayer times according to your location"
+    },
+    "stories": {
+      "title": "Prophet Stories",
+      "description": "Discover the inspiring stories of the Prophets of Islam"
+    },
+    "duas": {
+      "title": "Duas",
+      "description": "Complete collection of supplications for all moments"
+    },
+    "tasbih": {
+      "title": "Digital Tasbih",
+      "description": "Interactive dhikr counter for your daily supplications"
+    },
+    "goals": {
+      "title": "Daily Goals",
+      "description": "Islamic to-do list: prayers, dhikr, Quran reading"
+    },
+    "business": {
+      "title": "Halal Entrepreneurship",
+      "description": "Learn entrepreneurship while respecting Islamic principles"
+    }
+  },
+  "business": {
+    "title": "🚀 Entrepreneurship & Financial Freedom",
+    "description": "Transform your passion into a profitable business! Discover the secrets of halal entrepreneurship and build your digital empire while respecting your Islamic values.",
+    "strategies": {
+      "title": "Halal Strategies",
+      "description": "Proven methods to generate income in compliance with Islam"
+    },
+    "growth": {
+      "title": "Sustainable Growth",
+      "description": "Develop your business with ethical and sustainable principles"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Join a network of ambitious Muslim entrepreneurs"
+    },
+    "ebookTitle": "🎁 Free Guide: \"The 7 Pillars of Halal Entrepreneurship\"",
+    "ebookDescription": "Download our exclusive ebook and discover how to launch your business while respecting Islamic principles",
+    "ebookButton": "📚 Download Free"
+  },
+  "modal": {
+    "title": "📚 Download Free Ebook",
+    "description": "Enter your email to receive the guide \"The 7 Pillars of Halal Entrepreneurship\"",
+    "emailPlaceholder": "Your email address",
+    "submitButton": "📩 Send",
+    "submitting": "⏳ Sending...",
+    "privacyNote": "*We respect your privacy. No spam.",
+    "yopmailError": "Yopmail addresses are not accepted",
+    "successMessage": "Thank you! You will receive the ebook by email."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": [
+      {
+        "question": "Is the Build and Baraka app free?",
+        "answer": "Yes, Build and Baraka is completely free to download and use. We believe that access to spiritual tools should be accessible to all Muslims."
+      },
+      {
+        "question": "On which platforms is the app available?",
+        "answer": "Build and Baraka is available on iOS (App Store) and Android (Google Play). We are also working on a web version for maximum accessibility."
+      },
+      {
+        "question": "How are prayer times calculated?",
+        "answer": "We use precise algorithms based on your geolocation and internationally recognized calculation methods. You can adjust settings according to your juridical school."
+      },
+      {
+        "question": "What exactly is halal entrepreneurship?",
+        "answer": "Halal entrepreneurship consists of developing commercial activities while respecting Islamic principles: no riba (usury), no gharar (excessive speculation), and lawful products/services."
+      },
+      {
+        "question": "Can I use the app without internet connection?",
+        "answer": "Yes, most features work offline: tasbih, duas, prophet stories. Only prayer times require a connection for synchronization."
+      },
+      {
+        "question": "How can I download the ebook for free?",
+        "answer": "Simply click the download button, enter your email, and you will immediately receive the guide 'The 7 Pillars of Halal Entrepreneurship' in PDF."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Build and Baraka - The complete Muslim application",
+    "copyright": "© 2025 Build and Baraka. All rights reserved."
+  },
+  "scrollToTop": "Back to top",
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "switchToLight": "Switch to light theme",
+    "switchToDark": "Switch to dark theme"
+  },
+  "featuresPage": {
+    "title": "Features",
+    "subtitle": "Discover all the features of Build and Baraka that accompany you in your daily Muslim life",
+    "coreTitle": "Core Features",
+    "coreDescription": "Essential tools to enrich your daily religious practice",
+    "todoList": {
+      "title": "Muslim To-Do List",
+      "description": "Organize your daily religious obligations with our intelligent Islamic task list",
+      "tag1": "Prayers",
+      "tag2": "Quran",
+      "tag3": "Dhikr"
+    },
+    "prayerTimes": {
+      "title": "Prayer Times",
+      "description": "Receive accurate prayer times according to your location with different calculation methods",
+      "highlight": "GPS Precision"
+    },
+    "prophetsStories": {
+      "title": "Prophets Stories",
+      "description": "Discover the inspiring stories of the 25 prophets mentioned in the Holy Quran",
+      "numberLabel": "Prophets"
+    },
+    "duas": {
+      "title": "Duas Collection",
+      "description": "A complete library of supplications for all occasions in life",
+      "favorite": "Add to favorites"
+    },
+    "specialTitle": "Special Features",
+    "recipes": {
+      "title": "Prophetic Remedies",
+      "description": "Discover the remedies and recipes recommended by the Prophet ﷺ"
+    },
+    "live": {
+      "title": "Live Mecca & Medina",
+      "description": "Watch the Holy Places live 24/7",
+      "indicator": "Live"
+    },
+    "names": {
+      "title": "99 Names of Allah",
+      "description": "Explore the beautiful names of Allah with their meanings and invocations"
+    },
+    "fundamentals": {
+      "title": "Islamic Fundamentals",
+      "description": "Learn the basics of your religion with structured courses"
+    },
+    "additionalTitle": "Additional Features",
+    "tasbih": {
+      "title": "Digital Tasbih",
+      "description": "Interactive dhikr counter with different recitation modes"
+    },
+    "languages": {
+      "title": "3 Languages Available",
+      "description": "Interface available in French, English and Arabic"
+    },
+    "offline": {
+      "title": "Offline Mode",
+      "description": "Most features accessible even without internet"
+    },
+    "comingSoon": {
+      "badge": "Coming Soon",
+      "title": "New Features",
+      "description": "We constantly develop new features based on your feedback and suggestions",
+      "feedback": "Your ideas matter!"
+    }
+  },
+  "faqPage": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Quickly find answers to your questions about Build and Baraka",
+    "categoriesTitle": "Categories",
+    "searchPlaceholder": "Search in questions...",
+    "categories": {
+      "general": "General",
+      "app": "Application",
+      "features": "Features",
+      "technical": "Technical",
+      "account": "Account"
+    },
+    "questions": [
+      {
+        "category": "general",
+        "question": "What is Build and Baraka?",
+        "answer": "Build and Baraka is a complete mobile application dedicated to Muslims, offering all the essential tools to enrich your daily religious practice: prayer times, prophet stories, duas, and much more."
+      },
+      {
+        "category": "general",
+        "question": "Is the application free?",
+        "answer": "Yes, Build and Baraka is completely free to download and use. We believe that access to spiritual tools should be accessible to all Muslims without financial barriers."
+      },
+      {
+        "category": "app",
+        "question": "On which platforms is the application available?",
+        "answer": "Build and Baraka is available on iOS (App Store) and Android (Google Play). We are also working on a web version for maximum accessibility."
+      },
+      {
+        "category": "features",
+        "question": "How do prayer times work?",
+        "answer": "Our prayer times use precise algorithms based on your geolocation and internationally recognized calculation methods. You can adjust settings according to your juridical school."
+      },
+      {
+        "category": "features",
+        "question": "Can I use the application without internet connection?",
+        "answer": "Yes, most features work offline: tasbih, duas, prophet stories, 99 names of Allah. Only prayer times and Mecca live stream require a connection."
+      },
+      {
+        "category": "technical",
+        "question": "Does the application consume a lot of battery?",
+        "answer": "No, Build and Baraka is optimized to minimize battery consumption. Prayer notifications use efficient techniques to preserve your device's autonomy."
+      },
+      {
+        "category": "account",
+        "question": "Do I need to create an account to use the application?",
+        "answer": "An account is not mandatory to use basic features. However, creating an account allows you to sync your favorites and preferences across multiple devices."
+      },
+      {
+        "category": "features",
+        "question": "How can I bookmark duas?",
+        "answer": "In the Duas section, simply tap the star icon next to the supplication you want to save. Find all your favorites in the dedicated tab."
+      }
+    ],
+    "noResults": {
+      "title": "No results found",
+      "description": "Try with other keywords or browse a different category.",
+      "clearButton": "Clear filters"
+    },
+    "contactCta": {
+      "title": "Can't find your answer?",
+      "description": "Our team is here to help you. Don't hesitate to contact us for any specific question.",
+      "button": "Contact us"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help and answer any questions you may have",
+    "formTitle": "Send us a message",
+    "formDescription": "Fill out the form below and we'll get back to you as soon as possible.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "your.email@example.com",
+    "subjectLabel": "Contact reason",
+    "subjectPlaceholder": "Select a reason",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Describe your request or question in detail...",
+    "submitButton": "Send message",
+    "submitting": "Sending...",
+    "subjects": {
+      "general_feedback": "General feedback",
+      "suggestion": "Improvement suggestion",
+      "bug_report": "Report a bug",
+      "improvement": "Improvement request",
+      "partnership_request": "Partnership request",
+      "content_suggestion": "Content suggestion",
+      "other": "Other"
+    },
+    "responseTime": "Response time",
+    "responseTimeText": "We typically respond within 24 hours",
+    "support": "Support",
+    "supportText": "Assistance available 7 days a week",
+    "discord": "Discord Server",
+    "discordText": "Join our Discord community",
+    "clearField": "Clear field",
+    "successTitle": "Message sent!",
+    "successMessage": "Thank you for your message. Our team will get back to you very soon.",
+    "closeButton": "Close"
+  }
+}

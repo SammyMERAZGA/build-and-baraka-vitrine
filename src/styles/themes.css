@@ -1,0 +1,148 @@
+/* Theme System with CSS Variables */
+
+/* Light Theme (Default) */
+:root,
+.light-theme {
+  /* Primary Colors */
+  --color-primary: #00a1a7;
+  --color-secondary: #f5c230;
+  
+  /* Background Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8fdfe;
+  --color-bg-tertiary: #e8f8f9;
+  
+  /* Text Colors */
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-muted: #999999;
+  
+  /* Border Colors */
+  --color-border: rgba(0, 161, 167, 0.1);
+  --color-border-hover: #00a1a7;
+  
+  /* Shadow Colors */
+  --shadow-primary: rgba(0, 161, 167, 0.1);
+  --shadow-hover: rgba(0, 161, 167, 0.2);
+  
+  /* Component Colors */
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --navbar-border: #00a1a7;
+  --footer-bg: #00a1a7;
+  --modal-bg: #ffffff;
+  --card-bg: #ffffff;
+  
+  /* Animation Colors */
+  --shape-color: rgba(0, 161, 167, 0.12);
+}
+
+/* Dark Theme */
+.dark-theme {
+  /* Background Colors */
+  --color-bg-primary: #1a1a1a;
+  --color-bg-secondary: #1a1a1a;
+  --color-bg-tertiary: #1a1a1a;
+  
+  /* Text Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e0e0e0;
+  --color-text-muted: #aaaaaa;
+  
+  /* Card Colors */
+  --card-bg: #2d2d2d;
+  
+  /* Animation Colors */
+  --shape-color: rgba(0, 161, 167, 0.3);
+}
+
+/* Global theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Apply theme colors to common elements */
+body {
+  background-color: var(--color-bg-primary);
+}
+
+.home {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+}
+
+.features-section {
+  background: var(--color-bg-primary);
+}
+
+.business-section {
+  background: var(--color-bg-secondary);
+}
+
+.feature-card {
+  background: var(--card-bg, white) !important;
+  color: var(--color-text-primary, #333) !important;
+}
+
+.feature-card h3 {
+  color: var(--color-primary, #00a1a7) !important;
+}
+
+.feature-card p {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+.business-card {
+  background: var(--card-bg, white) !important;
+  color: var(--color-text-primary, #333) !important;
+}
+
+.business-card h3 {
+  color: var(--color-primary, #00a1a7) !important;
+}
+
+.business-card p {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+.section-title {
+  color: var(--color-primary, #00a1a7) !important;
+}
+
+.business-description {
+  color: var(--color-text-secondary, #666) !important;
+}
+
+.shape {
+  background: var(--shape-color) !important;
+}
+
+.contact {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+}
+
+.contact-section {
+  background: var(--color-bg-primary);
+}
+
+.features {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+}
+
+.core-features-section {
+  background: var(--color-bg-primary);
+}
+
+.special-features-section {
+  background: var(--color-bg-secondary);
+}
+
+.additional-features-section {
+  background: var(--color-bg-primary);
+}
+
+.faq {
+  background: linear-gradient(135deg, var(--color-bg-secondary) 0%, var(--color-bg-tertiary) 100%);
+}
+
+.faq-content-section {
+  background: var(--color-bg-primary);
+}

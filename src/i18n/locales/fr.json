@@ -1,0 +1,275 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Build and Baraka",
+    "subtitle": "L'application mobile musulmane complète",
+    "description": "Découvrez une application dédiée aux musulmans avec tous les outils islamiques essentiels : horaires de prières, histoires des prophètes, duaas, et bien plus encore.",
+    "downloadTitle": "Téléchargez l'application Build and Baraka sur :",
+    "googlePlay": "Google Play",
+    "appStore": "App Store"
+  },
+  "features": {
+    "title": "Fonctionnalités principales",
+    "prayer": {
+      "title": "Horaires de prières",
+      "description": "Consultez les horaires de prières précis selon votre localisation"
+    },
+    "stories": {
+      "title": "Histoires des prophètes",
+      "description": "Découvrez les récits inspirants des prophètes de l'Islam"
+    },
+    "duas": {
+      "title": "Duaas",
+      "description": "Collection complète d'invocations pour tous les moments"
+    },
+    "tasbih": {
+      "title": "Tasbih Numérique",
+      "description": "Compteur de dhikr interactif pour vos invocations quotidiennes"
+    },
+    "goals": {
+      "title": "Objectifs quotidiens",
+      "description": "To-do list islamique : prières, dhikr, lecture du Coran"
+    },
+    "business": {
+      "title": "Entrepreneuriat Halal",
+      "description": "Formez-vous à l'entrepreneuriat dans le respect des principes islamiques"
+    }
+  },
+  "business": {
+    "title": "🚀 Entrepreneuriat & Liberté Financière",
+    "description": "Transformez votre passion en business rentable ! Découvrez les secrets de l'entrepreneuriat halal et construisez votre empire numérique en respectant vos valeurs islamiques.",
+    "strategies": {
+      "title": "Stratégies Halal",
+      "description": "Méthodes éprouvées pour générer des revenus conformes à l'Islam"
+    },
+    "growth": {
+      "title": "Croissance Durable",
+      "description": "Développez votre business avec des principes éthiques et durables"
+    },
+    "community": {
+      "title": "Communauté",
+      "description": "Rejoignez un réseau d'entrepreneurs musulmans ambitieux"
+    },
+    "ebookTitle": "🎁 Guide Gratuit : \"Les 7 Piliers de l'Entrepreneuriat Halal\"",
+    "ebookDescription": "Téléchargez notre ebook exclusif et découvrez comment lancer votre business en respectant les principes islamiques",
+    "ebookButton": "📚 Télécharger Gratuitement"
+  },
+  "modal": {
+    "title": "📚 Télécharger l'Ebook Gratuit",
+    "description": "Entrez votre email pour recevoir le guide \"Les 7 Piliers de l'Entrepreneuriat Halal\"",
+    "emailPlaceholder": "Votre adresse email",
+    "submitButton": "📩 Envoyer",
+    "submitting": "⏳ Envoi...",
+    "privacyNote": "*Nous respectons votre vie privée. Pas de spam.",
+    "yopmailError": "Les adresses yopmail ne sont pas acceptées",
+    "successMessage": "Merci ! Vous allez recevoir l'ebook par email."
+  },
+  "faq": {
+    "title": "Questions Fréquentes",
+    "questions": [
+      {
+        "question": "L'application Build and Baraka est-elle gratuite ?",
+        "answer": "Oui, Build and Baraka est entièrement gratuite à télécharger et à utiliser. Nous croyons que l'accès aux outils spirituels doit être accessible à tous les musulmans."
+      },
+      {
+        "question": "Sur quelles plateformes l'application est-elle disponible ?",
+        "answer": "Build and Baraka est disponible sur iOS (App Store) et Android (Google Play). Nous travaillons également sur une version web pour une accessibilité maximale."
+      },
+      {
+        "question": "Comment sont calculées les heures de prières ?",
+        "answer": "Nous utilisons des algorithmes précis basés sur votre géolocalisation et les méthodes de calcul reconnues mondialement. Vous pouvez ajuster les paramètres selon votre école juridique."
+      },
+      {
+        "question": "L'entrepreneuriat halal, qu'est-ce que c'est exactement ?",
+        "answer": "L'entrepreneuriat halal consiste à développer des activités commerciales en respectant les principes islamiques : pas de riba (usure), pas de gharar (spéculation excessive), et des produits/services licites."
+      },
+      {
+        "question": "Puis-je utiliser l'application sans connexion internet ?",
+        "answer": "Oui, la plupart des fonctionnalités fonctionnent hors ligne : tasbih, duaas, histoires des prophètes. Seules les heures de prières nécessitent une connexion pour la synchronisation."
+      },
+      {
+        "question": "Comment puis-je télécharger l'ebook gratuitement ?",
+        "answer": "Il suffit de cliquer sur le bouton de téléchargement, d'entrer votre email, et vous recevrez immédiatement le guide 'Les 7 Piliers de l'Entrepreneuriat Halal' en PDF."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Build and Baraka - L'application musulmane complète",
+    "copyright": "© 2025 Build and Baraka. Tous droits réservés."
+  },
+  "scrollToTop": "Retour en haut",
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "switchToLight": "Basculer vers le thème clair",
+    "switchToDark": "Basculer vers le thème sombre"
+  },
+  "featuresPage": {
+    "title": "Fonctionnalités",
+    "subtitle": "Découvrez toutes les fonctionnalités de Build and Baraka qui vous accompagnent dans votre quotidien musulman",
+    "coreTitle": "Fonctionnalités Principales",
+    "coreDescription": "Des outils essentiels pour enrichir votre pratique religieuse au quotidien",
+    "todoList": {
+      "title": "To-Do List du Musulman",
+      "description": "Organisez vos obligations religieuses quotidiennes avec notre liste de tâches islamiques intelligente",
+      "tag1": "Prières",
+      "tag2": "Coran",
+      "tag3": "Dhikr"
+    },
+    "prayerTimes": {
+      "title": "Horaires de Prières",
+      "description": "Recevez les horaires de prières précis selon votre localisation avec différentes méthodes de calcul",
+      "highlight": "Précision GPS"
+    },
+    "prophetsStories": {
+      "title": "Histoires des Prophètes",
+      "description": "Découvrez les récits inspirants des 25 prophètes mentionnés dans le Saint Coran",
+      "numberLabel": "Prophètes"
+    },
+    "duas": {
+      "title": "Collection de Duaas",
+      "description": "Une bibliothèque complète d'invocations pour toutes les occasions de la vie",
+      "favorite": "Mise en favoris"
+    },
+    "specialTitle": "Fonctionnalités Spéciales",
+    "recipes": {
+      "title": "Recettes Prophétiques",
+      "description": "Découvrez les remèdes et recettes recommandés par le Prophète ﷺ"
+    },
+    "live": {
+      "title": "Live Mecque & Médine",
+      "description": "Regardez en direct les Lieux Saints 24h/24 et 7j/7",
+      "indicator": "En Direct"
+    },
+    "names": {
+      "title": "99 Noms d'Allah",
+      "description": "Explorez les magnifiques noms d'Allah avec leurs significations et invocations"
+    },
+    "fundamentals": {
+      "title": "Fondamentaux de l'Islam",
+      "description": "Apprenez les bases de votre religion avec des cours structurés"
+    },
+    "additionalTitle": "Fonctionnalités Additionnelles",
+    "tasbih": {
+      "title": "Tasbih Numérique",
+      "description": "Compteur de dhikr interactif avec différents modes de récitation"
+    },
+    "languages": {
+      "title": "3 Langues Disponibles",
+      "description": "Interface disponible en Français, Anglais et Arabe"
+    },
+    "offline": {
+      "title": "Mode Hors-ligne",
+      "description": "La plupart des fonctionnalités accessibles même sans internet"
+    },
+    "comingSoon": {
+      "badge": "Bientôt",
+      "title": "Nouvelles Fonctionnalités",
+      "description": "Nous développons constamment de nouvelles fonctionnalités basées sur vos retours et suggestions",
+      "feedback": "Vos idées comptent !"
+    }
+  },
+  "faqPage": {
+    "title": "Questions Fréquentes",
+    "subtitle": "Trouvez rapidement les réponses à vos questions sur Build and Baraka",
+    "categoriesTitle": "Catégories",
+    "searchPlaceholder": "Rechercher dans les questions...",
+    "categories": {
+      "general": "Général",
+      "app": "Application",
+      "features": "Fonctionnalités",
+      "technical": "Technique",
+      "account": "Compte"
+    },
+    "questions": [
+      {
+        "category": "general",
+        "question": "Qu'est-ce que Build and Baraka ?",
+        "answer": "Build and Baraka est une application mobile complète dédiée aux musulmans, offrant tous les outils essentiels pour enrichir votre pratique religieuse quotidienne : horaires de prières, histoires des prophètes, duaas, et bien plus encore."
+      },
+      {
+        "category": "general",
+        "question": "L'application est-elle gratuite ?",
+        "answer": "Oui, Build and Baraka est entièrement gratuite à télécharger et à utiliser. Nous croyons que l'accès aux outils spirituels doit être accessible à tous les musulmans sans barrière financière."
+      },
+      {
+        "category": "app",
+        "question": "Sur quelles plateformes l'application est-elle disponible ?",
+        "answer": "Build and Baraka est disponible sur iOS (App Store) et Android (Google Play). Nous travaillons également sur une version web pour une accessibilité maximale."
+      },
+      {
+        "category": "features",
+        "question": "Comment fonctionnent les horaires de prières ?",
+        "answer": "Nos horaires de prières utilisent des algorithmes précis basés sur votre géolocalisation et les méthodes de calcul reconnues mondialement. Vous pouvez ajuster les paramètres selon votre école juridique."
+      },
+      {
+        "category": "features",
+        "question": "Puis-je utiliser l'application sans connexion internet ?",
+        "answer": "Oui, la plupart des fonctionnalités fonctionnent hors ligne : tasbih, duaas, histoires des prophètes, 99 noms d'Allah. Seules les horaires de prières et le live de la Mecque nécessitent une connexion."
+      },
+      {
+        "category": "technical",
+        "question": "L'application consomme-t-elle beaucoup de batterie ?",
+        "answer": "Non, Build and Baraka est optimisée pour minimiser la consommation de batterie. Les notifications de prières utilisent des techniques efficaces pour préserver l'autonomie de votre appareil."
+      },
+      {
+        "category": "account",
+        "question": "Dois-je créer un compte pour utiliser l'application ?",
+        "answer": "Un compte n'est pas obligatoire pour utiliser les fonctionnalités de base. Cependant, créer un compte permet de synchroniser vos favoris et préférences sur plusieurs appareils."
+      },
+      {
+        "category": "features",
+        "question": "Comment puis-je mettre des duaas en favoris ?",
+        "answer": "Dans la section Duaas, appuyez simplement sur l'icône étoile à côté de l'invocation que vous souhaitez sauvegarder. Retrouvez tous vos favoris dans l'onglet dédié."
+      }
+    ],
+    "noResults": {
+      "title": "Aucun résultat trouvé",
+      "description": "Essayez avec d'autres mots-clés ou consultez une catégorie différente.",
+      "clearButton": "Effacer les filtres"
+    },
+    "contactCta": {
+      "title": "Vous ne trouvez pas votre réponse ?",
+      "description": "Notre équipe est là pour vous aider. N'hésitez pas à nous contacter pour toute question spécifique.",
+      "button": "Nous contacter"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous sommes là pour vous aider et répondre à toutes vos questions",
+    "formTitle": "Envoyez-nous un message",
+    "formDescription": "Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.",
+    "emailLabel": "Adresse email",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "subjectLabel": "Motif de contact",
+    "subjectPlaceholder": "Sélectionnez un motif",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Décrivez votre demande ou question en détail...",
+    "submitButton": "Envoyer le message",
+    "submitting": "Envoi en cours...",
+    "subjects": {
+      "general_feedback": "Commentaire général",
+      "suggestion": "Suggestion d'amélioration",
+      "bug_report": "Signaler un bug",
+      "improvement": "Demande d'amélioration",
+      "partnership_request": "Demande de partenariat",
+      "content_suggestion": "Suggestion de contenu",
+      "other": "Autre"
+    },
+    "responseTime": "Temps de réponse",
+    "responseTimeText": "Nous répondons généralement sous 24h",
+    "support": "Support",
+    "supportText": "Assistance disponible 7j/7",
+    "discord": "Serveur Discord",
+    "discordText": "Rejoignez notre communauté Discord",
+    "clearField": "Effacer le champ",
+    "successTitle": "Message envoyé !",
+    "successMessage": "Merci pour votre message. Notre équipe vous répondra très prochainement.",
+    "closeButton": "Fermer"
+  }
+}
