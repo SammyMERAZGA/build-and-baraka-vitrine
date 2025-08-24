@@ -2,10 +2,10 @@ version: "3.9"
 
 services:
   build-and-baraka-vitrine:
-    image: buildbaraka-vitrine:latest
     build:
       context: .
       dockerfile: Dockerfile
+    image: buildbaraka-vitrine:latest
     ports:
       - "3001:80"
     restart: unless-stopped
@@ -16,9 +16,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 60s
-    read_only: true
-    tmpfs:
-      - /tmp
     logging:
       driver: "json-file"
       options:
