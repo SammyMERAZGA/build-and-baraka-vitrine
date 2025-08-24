@@ -270,6 +270,11 @@
     "clearField": "Clear field",
     "successTitle": "Message sent!",
     "successMessage": "Thank you for your message. Our team will get back to you very soon.",
-    "closeButton": "Close"
+    "closeButton": "Close",
+    "validation": {
+      "required": "This field is required",
+      "emailRequired": "Email address is required",
+      "emailValid": "Email address must be valid"
+    }
   }
 }

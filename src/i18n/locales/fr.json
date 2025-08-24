@@ -259,7 +259,12 @@
     "clearField": "Effacer le champ",
     "successTitle": "Message envoyé !",
     "successMessage": "Merci pour votre message. Notre équipe vous répondra très prochainement.",
-    "closeButton": "Fermer"
+    "closeButton": "Fermer",
+    "validation": {
+      "required": "Ce champ est obligatoire",
+      "emailRequired": "L'adresse email est obligatoire",
+      "emailValid": "L'adresse email doit être valide"
+    }
   },
   "notFound": {
     "title": "Oops ! Page non trouvée",
