@@ -12,10 +12,10 @@ import NotFound from "@/views/NotFound.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", component: Home },
-  { path: "/features", component: Features },
+  { path: "/fonctionnalites", component: Features },
   { path: "/faq", component: FAQ },
   { path: "/contact", component: Contact },
-  { path: "/:pathMatch(.*)*", component: NotFound }
+  { path: "/:pathMatch(.*)*", component: NotFound },
 ];
 
 const router = createRouter({

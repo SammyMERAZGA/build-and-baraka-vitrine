@@ -37,12 +37,16 @@
           <div class="form-side">
             <div class="form-header">
               <h2 class="section-title">{{ $t("contact.formTitle") }}</h2>
-              <p class="form-description">{{ $t("contact.formDescription") }}</p>
+              <p class="form-description">
+                {{ $t("contact.formDescription") }}
+              </p>
             </div>
 
             <form @submit.prevent="submitContactForm" class="contact-form">
               <div class="form-group">
-                <label for="email" class="form-label">{{ $t("contact.emailLabel") }}</label>
+                <label for="email" class="form-label">{{
+                  $t("contact.emailLabel")
+                }}</label>
                 <div class="input-wrapper">
                   <input
                     v-model="formData.email"
@@ -59,15 +63,24 @@
                     class="clear-button"
                     :aria-label="$t('contact.clearField')"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
                     </svg>
                   </button>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="subject" class="form-label">{{ $t("contact.subjectLabel") }}</label>
+                <label for="subject" class="form-label">{{
+                  $t("contact.subjectLabel")
+                }}</label>
                 <div class="input-wrapper">
                   <select
                     v-model="formData.subject"
@@ -75,14 +88,30 @@
                     required
                     class="form-select"
                   >
-                    <option value="">{{ $t("contact.subjectPlaceholder") }}</option>
-                    <option value="general_feedback">{{ $t("contact.subjects.general_feedback") }}</option>
-                    <option value="suggestion">{{ $t("contact.subjects.suggestion") }}</option>
-                    <option value="bug_report">{{ $t("contact.subjects.bug_report") }}</option>
-                    <option value="improvement">{{ $t("contact.subjects.improvement") }}</option>
-                    <option value="partnership_request">{{ $t("contact.subjects.partnership_request") }}</option>
-                    <option value="content_suggestion">{{ $t("contact.subjects.content_suggestion") }}</option>
-                    <option value="other">{{ $t("contact.subjects.other") }}</option>
+                    <option value="">
+                      {{ $t("contact.subjectPlaceholder") }}
+                    </option>
+                    <option value="general_feedback">
+                      {{ $t("contact.subjects.general_feedback") }}
+                    </option>
+                    <option value="suggestion">
+                      {{ $t("contact.subjects.suggestion") }}
+                    </option>
+                    <option value="bug_report">
+                      {{ $t("contact.subjects.bug_report") }}
+                    </option>
+                    <option value="improvement">
+                      {{ $t("contact.subjects.improvement") }}
+                    </option>
+                    <option value="partnership_request">
+                      {{ $t("contact.subjects.partnership_request") }}
+                    </option>
+                    <option value="content_suggestion">
+                      {{ $t("contact.subjects.content_suggestion") }}
+                    </option>
+                    <option value="other">
+                      {{ $t("contact.subjects.other") }}
+                    </option>
                   </select>
                   <button
                     v-if="formData.subject"
@@ -91,15 +120,24 @@
                     class="clear-button"
                     :aria-label="$t('contact.clearField')"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
                     </svg>
                   </button>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="message" class="form-label">{{ $t("contact.messageLabel") }}</label>
+                <label for="message" class="form-label">{{
+                  $t("contact.messageLabel")
+                }}</label>
                 <div class="input-wrapper">
                   <textarea
                     v-model="formData.message"
@@ -116,8 +154,15 @@
                     class="clear-button textarea-clear"
                     :aria-label="$t('contact.clearField')"
                   >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                      />
                     </svg>
                   </button>
                 </div>
@@ -128,12 +173,38 @@
                 class="submit-button"
                 :disabled="isSubmitting"
               >
-                <span v-if="!isSubmitting">{{ $t("contact.submitButton") }}</span>
+                <span v-if="!isSubmitting">{{
+                  $t("contact.submitButton")
+                }}</span>
                 <span v-else class="submitting-content">
-                  <svg class="loading-spinner" width="20" height="20" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" opacity="0.3"/>
-                    <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" stroke-width="2" fill="none">
-                      <animateTransform attributeName="transform" type="rotate" values="0 12 12;360 12 12" dur="1s" repeatCount="indefinite"/>
+                  <svg
+                    class="loading-spinner"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      opacity="0.3"
+                    />
+                    <path
+                      d="M12 2a10 10 0 0 1 10 10"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    >
+                      <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        values="0 12 12;360 12 12"
+                        dur="1s"
+                        repeatCount="indefinite"
+                      />
                     </path>
                   </svg>
                   {{ $t("contact.submitting") }}
@@ -211,9 +282,9 @@ const isSubmitting = ref(false);
 const showSuccessModal = ref(false);
 
 const formData = ref({
-  email: '',
-  subject: '',
-  message: ''
+  email: "",
+  subject: "",
+  message: "",
 });
 
 const handleScroll = () => {
@@ -233,7 +304,7 @@ const submitContactForm = async () => {
   // Simulate form submission
   setTimeout(() => {
     showSuccessModal.value = true;
-    formData.value = { email: '', subject: '', message: '' };
+    formData.value = { email: "", subject: "", message: "" };
     isSubmitting.value = false;
   }, 2000);
 };
@@ -284,8 +355,13 @@ onUnmounted(() => {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* Floating Shapes Animation */
@@ -396,8 +472,13 @@ onUnmounted(() => {
 }
 
 @keyframes logoFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
 }
 
 .hero-title {
@@ -590,7 +671,9 @@ onUnmounted(() => {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Cards Side */
@@ -613,13 +696,18 @@ onUnmounted(() => {
 }
 
 .info-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 161, 167, 0.05), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 161, 167, 0.05),
+    transparent
+  );
   transition: left 0.5s ease;
 }
 
@@ -798,7 +886,11 @@ onUnmounted(() => {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 </style>

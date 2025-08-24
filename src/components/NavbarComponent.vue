@@ -1,14 +1,33 @@
 <template>
   <nav class="floating-navbar">
     <div class="navbar-content">
-      <img src="@/assets/logo3D.png" alt="Build and Baraka Logo" class="navbar-logo">
+      <img
+        src="@/assets/logo3D.png"
+        alt="Build and Baraka Logo"
+        class="navbar-logo"
+      />
       <div class="navbar-links" :class="{ 'mobile-open': mobileMenuOpen }">
-        <router-link to="/" class="nav-link" @click="closeMobileMenu">{{ $t('nav.home') }}</router-link>
-        <router-link to="/features" class="nav-link" @click="closeMobileMenu">{{ $t('nav.features') }}</router-link>
-        <router-link to="/faq" class="nav-link" @click="closeMobileMenu">{{ $t('nav.faq') }}</router-link>
-        <router-link to="/contact" class="nav-link" @click="closeMobileMenu">{{ $t('nav.contact') }}</router-link>
+        <router-link to="/" class="nav-link" @click="closeMobileMenu">{{
+          $t("nav.home")
+        }}</router-link>
+        <router-link
+          to="/fonctionnalites"
+          class="nav-link"
+          @click="closeMobileMenu"
+          >{{ $t("nav.features") }}</router-link
+        >
+        <router-link to="/faq" class="nav-link" @click="closeMobileMenu">{{
+          $t("nav.faq")
+        }}</router-link>
+        <router-link to="/contact" class="nav-link" @click="closeMobileMenu">{{
+          $t("nav.contact")
+        }}</router-link>
       </div>
-      <button class="mobile-menu-btn" @click="toggleMobileMenu" aria-label="Menu">
+      <button
+        class="mobile-menu-btn"
+        @click="toggleMobileMenu"
+        aria-label="Menu"
+      >
         <span class="hamburger-line" :class="{ active: mobileMenuOpen }"></span>
         <span class="hamburger-line" :class="{ active: mobileMenuOpen }"></span>
         <span class="hamburger-line" :class="{ active: mobileMenuOpen }"></span>
@@ -18,17 +37,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const mobileMenuOpen = ref(false)
+const mobileMenuOpen = ref(false);
 
 const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value
-}
+  mobileMenuOpen.value = !mobileMenuOpen.value;
+};
 
 const closeMobileMenu = () => {
-  mobileMenuOpen.value = false
-}
+  mobileMenuOpen.value = false;
+};
 </script>
 
 <style scoped>
@@ -93,16 +112,16 @@ const closeMobileMenu = () => {
     width: 70%;
     padding: 12px 20px;
   }
-  
+
   .navbar-links {
     gap: 5px;
   }
-  
+
   .nav-link {
     font-size: 14px;
     padding: 6px 12px;
   }
-  
+
   .navbar-logo {
     height: 35px;
   }
@@ -156,20 +175,20 @@ const closeMobileMenu = () => {
     right: auto;
     transform: none;
   }
-  
+
   .navbar-content {
     position: relative;
     justify-content: flex-start;
   }
-  
+
   .navbar-logo {
     display: none;
   }
-  
+
   .navbar-links {
     display: none !important;
   }
-  
+
   .mobile-menu-btn {
     display: flex;
     position: static;
@@ -183,7 +202,7 @@ const closeMobileMenu = () => {
     align-items: center;
     justify-content: center;
   }
-  
+
   /* Mobile dropdown menu */
   .navbar-links.mobile-open {
     display: flex !important;
@@ -202,7 +221,7 @@ const closeMobileMenu = () => {
     animation: slideDown 0.3s ease-out;
     z-index: 1001;
   }
-  
+
   .navbar-links.mobile-open .nav-link {
     width: 100%;
     text-align: center;
@@ -212,7 +231,7 @@ const closeMobileMenu = () => {
     border-radius: 12px;
     transition: all 0.2s ease;
   }
-  
+
   .navbar-links.mobile-open .nav-link:hover {
     transform: scale(1.02);
     box-shadow: 0 5px 15px rgba(0, 161, 167, 0.2);
