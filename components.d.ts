@@ -10,10 +10,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     FooterComponent: typeof import('./src/components/FooterComponent.vue')['default']
     LanguageSelector: typeof import('./src/components/LanguageSelector.vue')['default']
-    LanguageSwitcher: typeof import('./src/components/LanguageSwitcher.vue')['default']
     NavbarComponent: typeof import('./src/components/NavbarComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ThemeToggle: typeof import('./src/components/ThemeToggle.vue')['default']
   }
 }

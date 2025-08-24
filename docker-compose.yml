@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   build-and-baraka-vitrine:
     image: buildbaraka-vitrine:latest
@@ -5,26 +7,16 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "127.0.0.1:3001:80" # sécurisé : accessible seulement en local (reverse proxy conseillé)
-    environment:
-      - NODE_ENV=production
+      - "3001:80"
     restart: unless-stopped
     container_name: build-and-baraka-vitrine
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      test: ["CMD", "curl", "-f", "http://localhost/"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 60s
-    security_opt:
-      - no-new-privileges:true
-    cap_drop:
-      - ALL
-    cap_add:
-      - CHOWN
-      - SETGID
-      - SETUID
-    read_only: false
+    read_only: true
     tmpfs:
       - /tmp
     logging:

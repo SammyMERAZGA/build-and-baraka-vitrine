@@ -1,0 +1,64 @@
+name: Deploy Build & Baraka
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t buildbaraka-vitrine:latest \
+            .
+
+      - name: Save Docker image
+        run: docker save buildbaraka-vitrine:latest | gzip > buildbaraka-vitrine.tar.gz
+
+      - name: Copy files to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          source: "buildbaraka-vitrine.tar.gz,docker-compose.yml"
+          target: "/var/www/buildbaraka/vitrine/"
+
+      - name: Deploy on VPS
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT }}
+          script: |
+            cd /var/www/buildbaraka/vitrine/
+
+            # Stop existing container
+            docker compose down || true
+
+            # Load new image
+            docker load < buildbaraka-vitrine.tar.gz
+
+            # Start new container
+            docker compose up -d
+
+            # Clean up
+            docker image prune -f
+            rm buildbaraka-vitrine.tar.gz
+
+            # Reload nginx to ensure routing works
+            sudo systemctl reload nginx
+
+            echo "✅ Deployment completed successfully!"
