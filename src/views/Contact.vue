@@ -1,10 +1,7 @@
 <template>
   <div class="contact">
-    <!-- Theme Toggle -->
-    <ThemeToggle />
-
-    <!-- Language Switcher -->
-    <LanguageSwitcher />
+    <!-- Language Selector -->
+    <LanguageSelector />
 
     <!-- Floating Navbar -->
     <NavbarComponent />
@@ -205,8 +202,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
-import ThemeToggle from "@/components/ThemeToggle.vue";
+import LanguageSelector from "@/components/LanguageSelector.vue";
 
 const { t } = useI18n();
 

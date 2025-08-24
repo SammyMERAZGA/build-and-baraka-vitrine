@@ -1,9 +1,7 @@
-/* Theme System with CSS Variables */
+/* Light Theme Only - Clean Design */
 
-/* Light Theme (Default) */
-:root,
-.light-theme {
-  /* Primary Colors */
+/* Primary Colors */
+:root {
   --color-primary: #00a1a7;
   --color-secondary: #f5c230;
   
@@ -36,28 +34,30 @@
   --shape-color: rgba(0, 161, 167, 0.12);
 }
 
-/* Dark Theme */
-.dark-theme {
-  /* Background Colors */
-  --color-bg-primary: #1a1a1a;
-  --color-bg-secondary: #1a1a1a;
-  --color-bg-tertiary: #1a1a1a;
-  
-  /* Text Colors */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #e0e0e0;
-  --color-text-muted: #aaaaaa;
-  
-  /* Card Colors */
-  --card-bg: #2d2d2d;
-  
-  /* Animation Colors */
-  --shape-color: rgba(0, 161, 167, 0.3);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* Global theme transitions */
+::-webkit-scrollbar-track {
+  background: rgba(0, 161, 167, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #007479;
+}
+
+/* Firefox */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(0, 161, 167, 0.1);
 }
 
 /* Apply theme colors to common elements */
@@ -70,7 +70,7 @@ body {
 }
 
 .features-section {
-  background: var(--color-bg-primary);
+  background: var(--color-bg-primary) !important;
 }
 
 .business-section {

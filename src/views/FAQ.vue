@@ -1,10 +1,7 @@
 <template>
   <div class="faq">
-    <!-- Theme Toggle -->
-    <ThemeToggle />
-
-    <!-- Language Switcher -->
-    <LanguageSwitcher />
+    <!-- Language Selector -->
+    <LanguageSelector />
 
     <!-- Floating Navbar -->
     <NavbarComponent />
@@ -43,7 +40,10 @@
                 v-for="(category, index) in categories"
                 :key="index"
                 @click="activeCategory = category.id"
-                :class="['category-btn', { active: activeCategory === category.id }]"
+                :class="[
+                  'category-btn',
+                  { active: activeCategory === category.id },
+                ]"
               >
                 <span class="category-icon">{{ category.icon }}</span>
                 {{ $t(`faqPage.categories.${category.id}`) }}
@@ -55,8 +55,16 @@
           <div class="faq-questions">
             <div class="search-box">
               <div class="search-input-wrapper">
-                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                <svg
+                  class="search-icon"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
                 </svg>
                 <input
                   v-model="searchQuery"
@@ -69,8 +77,15 @@
                   @click="searchQuery = ''"
                   class="clear-search"
                 >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                    />
                   </svg>
                 </button>
               </div>
@@ -83,13 +98,12 @@
                 class="faq-item"
                 :class="{ active: activeFaq === index }"
               >
-                <button
-                  @click="toggleFaq(index)"
-                  class="faq-question"
-                >
+                <button @click="toggleFaq(index)" class="faq-question">
                   <div class="question-content">
-                    <span class="question-number">{{ String(index + 1).padStart(2, '0') }}</span>
-                    <h4>{{ faqPage.question }}</h4>
+                    <span class="question-number">{{
+                      String(index + 1).padStart(2, "0")
+                    }}</span>
+                    <h4>{{ faq.question }}</h4>
                   </div>
                   <div class="question-icon">
                     <svg
@@ -99,7 +113,7 @@
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
-                      <path d="M7 10l5 5 5-5z"/>
+                      <path d="M7 10l5 5 5-5z" />
                     </svg>
                   </div>
                 </button>
@@ -108,7 +122,7 @@
                   :class="{ expanded: activeFaq === index }"
                 >
                   <div class="answer-content">
-                    <p>{{ faqPage.answer }}</p>
+                    <p>{{ faq.answer }}</p>
                   </div>
                 </div>
               </div>
@@ -133,8 +147,15 @@
             <p>{{ $t("faqPage.contactCta.description") }}</p>
             <router-link to="/contact" class="cta-button">
               {{ $t("faqPage.contactCta.button") }}
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
               </svg>
             </router-link>
           </div>
@@ -164,46 +185,69 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
-import ThemeToggle from "@/components/ThemeToggle.vue";
+import LanguageSelector from "@/components/LanguageSelector.vue";
 
-const { t } = useI18n();
+const { t, locale, messages } = useI18n();
 
 const showScrollToTop = ref(false);
 const activeFaq = ref<number | null>(null);
-const activeCategory = ref('general');
-const searchQuery = ref('');
+const activeCategory = ref("general");
+const searchQuery = ref("");
 
 const categories = [
-  { id: 'general', icon: '💡' },
-  { id: 'app', icon: '📱' },
-  { id: 'features', icon: '⭐' },
-  { id: 'technical', icon: '⚙️' },
-  { id: 'account', icon: '👤' }
+  { id: "general", icon: "💡" },
+  { id: "app", icon: "📱" },
+  { id: "features", icon: "⭐" },
+  { id: "technical", icon: "⚙️" },
+  { id: "account", icon: "👤" },
 ];
 
+interface FAQItem {
+  category: string;
+  question: string;
+  answer: string;
+}
+
 const faqData = computed(() => {
-  const faqs = t('faqPage.questions', {}, { returnObjects: true });
-  return Array.isArray(faqs) ? faqs : [];
+  try {
+    // Debug: log pour vérifier ce qui est récupéré
+    console.log("Current locale:", locale.value);
+    
+    const currentMessages = messages.value[locale.value] as any;
+    console.log("Current messages:", currentMessages);
+    
+    if (currentMessages?.faqPage?.questions) {
+      console.log("FAQ questions found:", currentMessages.faqPage.questions);
+      return currentMessages.faqPage.questions as FAQItem[];
+    }
+    
+    return [];
+  } catch (error) {
+    console.error("Error loading FAQ data:", error);
+    return [];
+  }
 });
 
 const filteredFAQs = computed(() => {
   let filtered = faqData.value;
-  
+
   // Filter by category if not 'general'
-  if (activeCategory.value !== 'general') {
-    filtered = filtered.filter((faq: any) => faqPage.category === activeCategory.value);
+  if (activeCategory.value !== "general") {
+    filtered = filtered.filter(
+      (faq: FAQItem) => faq.category === activeCategory.value
+    );
   }
-  
+
   // Filter by search query
   if (searchQuery.value) {
     const query = searchQuery.value.toLowerCase();
-    filtered = filtered.filter((faq: any) => 
-      faqPage.question.toLowerCase().includes(query) || 
-      faqPage.answer.toLowerCase().includes(query)
+    filtered = filtered.filter(
+      (faq: FAQItem) =>
+        faq.question.toLowerCase().includes(query) ||
+        faq.answer.toLowerCase().includes(query)
     );
   }
-  
+
   return filtered;
 });
 
@@ -268,8 +312,13 @@ onUnmounted(() => {
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
 
 /* Floating Shapes Animation */
@@ -380,14 +429,19 @@ onUnmounted(() => {
 }
 
 @keyframes logoFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1deg); }
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
 }
 
 .hero-title {
   font-size: 3rem;
   font-weight: 700;
-  color: #00a1a7;
+  color: var(--color-primary);
   margin-bottom: 15px;
   animation: slideInUp 1s ease-out;
 }
@@ -468,14 +522,14 @@ onUnmounted(() => {
 }
 
 .category-btn:hover {
-  border-color: #00a1a7;
+  border-color: var(--color-primary);
   transform: translateX(5px);
 }
 
 .category-btn.active {
-  background: linear-gradient(135deg, #00a1a7, #008a8f);
+  background: var(--color-primary);
   color: white;
-  border-color: #00a1a7;
+  border-color: var(--color-primary);
 }
 
 .category-icon {
@@ -504,7 +558,7 @@ onUnmounted(() => {
 .search-input {
   width: 100%;
   padding: 15px 50px 15px 45px;
-  border: 2px solid #00a1a7;
+  border: 2px solid var(--color-primary);
   border-radius: 12px;
   font-size: 1rem;
   background: white;
@@ -514,7 +568,7 @@ onUnmounted(() => {
 
 .search-input:focus {
   outline: none;
-  border-color: #008a8f;
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
 }
 
@@ -584,7 +638,7 @@ onUnmounted(() => {
 }
 
 .question-number {
-  background: linear-gradient(135deg, #00a1a7, #f5c230);
+  background: var(--color-primary);
   color: white;
   width: 40px;
   height: 40px;
@@ -605,7 +659,7 @@ onUnmounted(() => {
 }
 
 .question-icon {
-  color: #00a1a7;
+  color: var(--color-primary);
   transition: transform 0.3s ease;
 }
 
@@ -663,7 +717,7 @@ onUnmounted(() => {
 }
 
 .clear-filters-btn {
-  background: #00a1a7;
+  background: var(--color-primary);
   color: white;
   border: none;
   padding: 12px 24px;
@@ -674,7 +728,7 @@ onUnmounted(() => {
 }
 
 .clear-filters-btn:hover {
-  background: #008a8f;
+  background: var(--color-primary-dark, #008a8f);
   transform: translateY(-2px);
 }
 
@@ -690,20 +744,24 @@ onUnmounted(() => {
 }
 
 .contact-cta::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #00a1a7, #f5c230, #00a1a7);
+  background: var(--color-primary);
   background-size: 200% 100%;
   animation: shimmer 3s linear infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 .cta-content h3 {
@@ -726,7 +784,7 @@ onUnmounted(() => {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #00a1a7, #008a8f);
+  background: var(--color-primary);
   color: white;
   text-decoration: none;
   padding: 15px 30px;
@@ -748,7 +806,7 @@ onUnmounted(() => {
   right: 30px;
   width: 50px;
   height: 50px;
-  background: #00a1a7;
+  background: var(--color-primary);
   color: white;
   border: 2px solid white;
   border-radius: 50%;
@@ -762,7 +820,7 @@ onUnmounted(() => {
 }
 
 .scroll-to-top:hover {
-  background: #008a8f;
+  background: var(--color-primary-dark, #008a8f);
   transform: translateY(-3px);
   box-shadow: 0 6px 20px rgba(0, 161, 167, 0.4);
 }

@@ -1,10 +1,7 @@
 <template>
   <div class="home">
-    <!-- Theme Toggle -->
-    <ThemeToggle />
-
-    <!-- Language Switcher -->
-    <LanguageSwitcher />
+    <!-- Language Selector -->
+    <LanguageSelector />
 
     <!-- Floating Navbar -->
     <NavbarComponent />
@@ -195,8 +192,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
-import ThemeToggle from "@/components/ThemeToggle.vue";
+import LanguageSelector from "@/components/LanguageSelector.vue";
 
 const { t } = useI18n();
 
@@ -520,7 +516,7 @@ onUnmounted(() => {
 /* Features Section */
 .features-section {
   padding: 100px 20px;
-  background: white;
+  background: var(--color-bg-primary);
 }
 
 .container {
@@ -549,6 +545,8 @@ onUnmounted(() => {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid transparent;
+  background: var(--card-bg);
+  color: var(--color-text-primary);
 }
 
 .feature-card:hover {
@@ -565,12 +563,12 @@ onUnmounted(() => {
 .feature-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: #00a1a7;
+  color: var(--color-primary);
   margin-bottom: 15px;
 }
 
 .feature-card p {
-  color: #666;
+  color: var(--color-text-secondary);
   line-height: 1.6;
 }
 
@@ -617,19 +615,19 @@ onUnmounted(() => {
 }
 
 .business-card {
-  background: white;
+  background: var(--card-bg);
   padding: 30px;
   border-radius: 20px;
   text-align: center;
   transition: all 0.3s ease;
-  border: 2px solid rgba(0, 161, 167, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 161, 167, 0.1);
+  border: 2px solid var(--color-border);
+  box-shadow: 0 4px 15px var(--shadow-primary);
 }
 
 .business-card:hover {
   transform: translateY(-5px);
-  border-color: #00a1a7;
-  box-shadow: 0 15px 40px rgba(0, 161, 167, 0.2);
+  border-color: var(--color-border-hover);
+  box-shadow: 0 15px 40px var(--shadow-hover);
 }
 
 .business-icon {
@@ -642,20 +640,20 @@ onUnmounted(() => {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 15px;
-  color: #00a1a7;
+  color: var(--color-primary);
 }
 
 .business-card p {
-  color: #666;
+  color: var(--color-text-secondary);
   line-height: 1.6;
 }
 
 .ebook-section {
-  background: white;
+  background: var(--card-bg);
   padding: 40px;
   border-radius: 25px;
   text-align: center;
-  border: 2px solid #00a1a7;
+  border: 2px solid var(--color-border-hover);
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0, 161, 167, 0.15);
@@ -692,12 +690,12 @@ onUnmounted(() => {
   margin-bottom: 15px;
   position: relative;
   z-index: 2;
-  color: #00a1a7;
+  color: var(--color-primary);
 }
 
 .ebook-description {
   margin-bottom: 25px;
-  color: #666;
+  color: var(--color-text-secondary);
   position: relative;
   z-index: 2;
 }
@@ -749,15 +747,15 @@ onUnmounted(() => {
 }
 
 .modal-content {
-  background: white;
+  background: var(--modal-bg);
   padding: 40px;
   border-radius: 20px;
   max-width: 500px;
   width: 90%;
   position: relative;
   animation: slideInScale 0.3s ease;
-  box-shadow: 0 20px 60px rgba(0, 161, 167, 0.3);
-  border: 2px solid #00a1a7;
+  box-shadow: 0 20px 60px var(--shadow-hover);
+  border: 2px solid var(--color-border-hover);
 }
 
 @keyframes slideInScale {
@@ -788,13 +786,13 @@ onUnmounted(() => {
 }
 
 .modal-content h3 {
-  color: #00a1a7;
+  color: var(--color-primary);
   margin-bottom: 15px;
   font-size: 1.5rem;
 }
 
 .modal-content p {
-  color: #666;
+  color: var(--color-text-secondary);
   margin-bottom: 25px;
   line-height: 1.6;
 }

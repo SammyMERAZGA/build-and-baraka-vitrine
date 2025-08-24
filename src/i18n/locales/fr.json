@@ -69,53 +69,18 @@
     "yopmailError": "Les adresses yopmail ne sont pas acceptées",
     "successMessage": "Merci ! Vous allez recevoir l'ebook par email."
   },
-  "faq": {
-    "title": "Questions Fréquentes",
-    "questions": [
-      {
-        "question": "L'application Build and Baraka est-elle gratuite ?",
-        "answer": "Oui, Build and Baraka est entièrement gratuite à télécharger et à utiliser. Nous croyons que l'accès aux outils spirituels doit être accessible à tous les musulmans."
-      },
-      {
-        "question": "Sur quelles plateformes l'application est-elle disponible ?",
-        "answer": "Build and Baraka est disponible sur iOS (App Store) et Android (Google Play). Nous travaillons également sur une version web pour une accessibilité maximale."
-      },
-      {
-        "question": "Comment sont calculées les heures de prières ?",
-        "answer": "Nous utilisons des algorithmes précis basés sur votre géolocalisation et les méthodes de calcul reconnues mondialement. Vous pouvez ajuster les paramètres selon votre école juridique."
-      },
-      {
-        "question": "L'entrepreneuriat halal, qu'est-ce que c'est exactement ?",
-        "answer": "L'entrepreneuriat halal consiste à développer des activités commerciales en respectant les principes islamiques : pas de riba (usure), pas de gharar (spéculation excessive), et des produits/services licites."
-      },
-      {
-        "question": "Puis-je utiliser l'application sans connexion internet ?",
-        "answer": "Oui, la plupart des fonctionnalités fonctionnent hors ligne : tasbih, duaas, histoires des prophètes. Seules les heures de prières nécessitent une connexion pour la synchronisation."
-      },
-      {
-        "question": "Comment puis-je télécharger l'ebook gratuitement ?",
-        "answer": "Il suffit de cliquer sur le bouton de téléchargement, d'entrer votre email, et vous recevrez immédiatement le guide 'Les 7 Piliers de l'Entrepreneuriat Halal' en PDF."
-      }
-    ]
-  },
   "footer": {
     "description": "Build and Baraka - L'application musulmane complète",
     "copyright": "© 2025 Build and Baraka. Tous droits réservés."
   },
   "scrollToTop": "Retour en haut",
-  "theme": {
-    "light": "Clair",
-    "dark": "Sombre",
-    "switchToLight": "Basculer vers le thème clair",
-    "switchToDark": "Basculer vers le thème sombre"
-  },
   "featuresPage": {
     "title": "Fonctionnalités",
     "subtitle": "Découvrez toutes les fonctionnalités de Build and Baraka qui vous accompagnent dans votre quotidien musulman",
-    "coreTitle": "Fonctionnalités Principales",
+    "coreTitle": "Fonctionnalités principales",
     "coreDescription": "Des outils essentiels pour enrichir votre pratique religieuse au quotidien",
     "todoList": {
-      "title": "To-Do List du Musulman",
+      "title": "To-do list du musulman",
       "description": "Organisez vos obligations religieuses quotidiennes avec notre liste de tâches islamiques intelligente",
       "tag1": "Prières",
       "tag2": "Coran",
@@ -123,12 +88,12 @@
     },
     "prayerTimes": {
       "title": "Horaires de Prières",
-      "description": "Recevez les horaires de prières précis selon votre localisation avec différentes méthodes de calcul",
+      "description": "Recevez les horaires de prières précis selon votre localisation en France.",
       "highlight": "Précision GPS"
     },
     "prophetsStories": {
       "title": "Histoires des Prophètes",
-      "description": "Découvrez les récits inspirants des 25 prophètes mentionnés dans le Saint Coran",
+      "description": "Découvrez les récits inspirants des 25 prophètes mentionnés dans le Coran",
       "numberLabel": "Prophètes"
     },
     "duas": {
@@ -143,7 +108,7 @@
     },
     "live": {
       "title": "Live Mecque & Médine",
-      "description": "Regardez en direct les Lieux Saints 24h/24 et 7j/7",
+      "description": "Regardez en direct la Mecque ou la Médine 24h/24 et 7j/7",
       "indicator": "En Direct"
     },
     "names": {
@@ -157,7 +122,7 @@
     "additionalTitle": "Fonctionnalités Additionnelles",
     "tasbih": {
       "title": "Tasbih Numérique",
-      "description": "Compteur de dhikr interactif avec différents modes de récitation"
+      "description": "Compteur de dhikr interactif et intuitif."
     },
     "languages": {
       "title": "3 Langues Disponibles",
@@ -172,7 +137,31 @@
       "title": "Nouvelles Fonctionnalités",
       "description": "Nous développons constamment de nouvelles fonctionnalités basées sur vos retours et suggestions",
       "feedback": "Vos idées comptent !"
-    }
+    },
+    "heroBadge": "Découvrez toutes nos fonctionnalités",
+    "heroCallToAction": "Faites défiler pour explorer",
+    "prayerNames": {
+      "fajr": "Fajr",
+      "dhuhr": "Dhuhr",
+      "asr": "Asr",
+      "maghrib": "Maghrib",
+      "isha": "Isha"
+    },
+    "prayerNote": "Inclut également les prières surérogatoires",
+    "prophetsNames": {
+      "muhammad": "Muhammad ﷺ",
+      "ibrahim": "Ibrahim ع",
+      "moussa": "Moussa ع",
+      "isa": "'Isa ع",
+      "others": "+21 autres"
+    },
+    "duaCategory": "Invocations quotidiennes",
+    "tasbihCounter": "SubhanAllah",
+    "moreFeatures": "Et bien plus encore...",
+    "additionalDescription": "Des fonctionnalités conçues pour enrichir votre pratique spirituelle",
+    "liveIndicator": "EN DIRECT",
+    "comingSoonBadge": "BIENTÔT",
+    "newFeaturesTitle": "Nouvelles fonctionnalités"
   },
   "faqPage": {
     "title": "Questions Fréquentes",
@@ -190,22 +179,22 @@
       {
         "category": "general",
         "question": "Qu'est-ce que Build and Baraka ?",
-        "answer": "Build and Baraka est une application mobile complète dédiée aux musulmans, offrant tous les outils essentiels pour enrichir votre pratique religieuse quotidienne : horaires de prières, histoires des prophètes, duaas, et bien plus encore."
+        "answer": "Build and Baraka est une application mobile complète dédiée aux musulmans, offrant tous les outils essentiels pour enrichir votre pratique religieuse quotidienne : horaires de prières, histoires des prophètes, duaas, et bien plus encore !"
       },
       {
         "category": "general",
         "question": "L'application est-elle gratuite ?",
-        "answer": "Oui, Build and Baraka est entièrement gratuite à télécharger et à utiliser. Nous croyons que l'accès aux outils spirituels doit être accessible à tous les musulmans sans barrière financière."
+        "answer": "Oui, Build and Baraka est entièrement gratuite à télécharger et à utiliser. Également, elle restera gratuite à vie !"
       },
       {
         "category": "app",
         "question": "Sur quelles plateformes l'application est-elle disponible ?",
-        "answer": "Build and Baraka est disponible sur iOS (App Store) et Android (Google Play). Nous travaillons également sur une version web pour une accessibilité maximale."
+        "answer": "Build and Baraka est disponible sur iOS (App Store) et Android (Google Play)."
       },
       {
         "category": "features",
         "question": "Comment fonctionnent les horaires de prières ?",
-        "answer": "Nos horaires de prières utilisent des algorithmes précis basés sur votre géolocalisation et les méthodes de calcul reconnues mondialement. Vous pouvez ajuster les paramètres selon votre école juridique."
+        "answer": "Nos horaires de prières utilisent l'API de https://aladhan.com/, une source fiable qui fournit des horaires précises basés sur votre géolocalisation et les méthodes de calcul reconnues mondialement."
       },
       {
         "category": "features",
@@ -213,19 +202,24 @@
         "answer": "Oui, la plupart des fonctionnalités fonctionnent hors ligne : tasbih, duaas, histoires des prophètes, 99 noms d'Allah. Seules les horaires de prières et le live de la Mecque nécessitent une connexion."
       },
       {
-        "category": "technical",
-        "question": "L'application consomme-t-elle beaucoup de batterie ?",
-        "answer": "Non, Build and Baraka est optimisée pour minimiser la consommation de batterie. Les notifications de prières utilisent des techniques efficaces pour préserver l'autonomie de votre appareil."
-      },
-      {
         "category": "account",
         "question": "Dois-je créer un compte pour utiliser l'application ?",
         "answer": "Un compte n'est pas obligatoire pour utiliser les fonctionnalités de base. Cependant, créer un compte permet de synchroniser vos favoris et préférences sur plusieurs appareils."
       },
       {
-        "category": "features",
-        "question": "Comment puis-je mettre des duaas en favoris ?",
-        "answer": "Dans la section Duaas, appuyez simplement sur l'icône étoile à côté de l'invocation que vous souhaitez sauvegarder. Retrouvez tous vos favoris dans l'onglet dédié."
+        "category": "technical",
+        "question": "Avec quelles technologies l'application mobile a-t-elle été développée ?",
+        "answer": "L'application mobile Build and Baraka a été développée en React Native, ce qui permet de la déployer simultanément sur iOS et Android avec une seule base de code."
+      },
+      {
+        "category": "technical",
+        "question": "Comment ce site vitrine a-t-il été créé ?",
+        "answer": "Ce site vitrine a été développé avec Vue.js et TypeScript, offrant une expérience utilisateur moderne et performante."
+      },
+      {
+        "category": "technical",
+        "question": "Quelle technologie utilise l'API backend ?",
+        "answer": "L'API backend de Build and Baraka est développée avec NestJS, un framework Node.js robuste et scalable."
       }
     ],
     "noResults": {
