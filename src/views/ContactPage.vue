@@ -8,16 +8,6 @@
 
     <!-- Hero Section -->
     <section class="hero-section">
-      <!-- Floating Shapes Animation -->
-      <div class="floating-shapes">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-        <div class="shape shape-5"></div>
-        <div class="shape shape-6"></div>
-      </div>
-
       <div class="hero-content">
         <img
           src="@/assets/logo3D.png"
@@ -235,69 +225,6 @@ const submitContactForm = async () => {
   pointer-events: none;
 }
 
-/* Floating Shapes Animation */
-.floating-shapes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.shape {
-  position: absolute;
-  background: rgba(0, 161, 167, 0.12);
-}
-
-.shape-1 {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  top: 20%;
-}
-
-.shape-2 {
-  right: 15%;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  top: 30%;
-}
-
-.shape-3 {
-  left: 20%;
-  width: 25px;
-  height: 25px;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  top: 60%;
-}
-
-.shape-4 {
-  right: 25%;
-  width: 18px;
-  height: 18px;
-  border-radius: 8px;
-  top: 70%;
-}
-
-.shape-5 {
-  left: 5%;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  top: 80%;
-}
-
-.shape-6 {
-  right: 10%;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
-  top: 10%;
-}
 
 /* Hero Section */
 .hero-section {
@@ -672,13 +599,5 @@ const submitContactForm = async () => {
     gap: 40px;
   }
 
-  .shape {
-    transform: scale(0.8);
-  }
-
-  .shape-5,
-  .shape-6 {
-    display: none;
-  }
 }
 </style>

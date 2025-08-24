@@ -1078,6 +1078,7 @@ onUnmounted(() => {
 /* Todo Item */
 .todo-item {
   grid-column: span 3;
+  border: 1px solid rgba(0, 161, 167, 0.15);
 }
 
 .checklist-bg {
@@ -1128,6 +1129,7 @@ onUnmounted(() => {
 .names-item {
   grid-column: span 5;
   background: white;
+  border: 1px solid rgba(0, 161, 167, 0.15);
 }
 
 .names-circle {
@@ -1193,6 +1195,7 @@ onUnmounted(() => {
 /* Tasbih Item */
 .tasbih-item {
   grid-column: span 4;
+  border: 1px solid rgba(0, 161, 167, 0.15);
 }
 
 .tasbih-beads {
