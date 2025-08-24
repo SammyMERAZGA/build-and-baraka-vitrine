@@ -17,8 +17,10 @@
             max-width="80"
             class="mx-auto mb-6"
           />
-          <h1 class="hero-title text-primary mb-4">{{ $t("contact.title") }}</h1>
-          <p class="hero-subtitle text-h6 mb-8" style="color: #666;">
+          <h1 class="hero-title text-primary mb-4">
+            {{ $t("contact.title") }}
+          </h1>
+          <p class="hero-subtitle text-h6 mb-8">
             {{ $t("contact.subtitle") }}
           </p>
         </v-col>
@@ -35,7 +37,7 @@
               <v-card-title class="text-h4 text-primary mb-2 px-0">
                 {{ $t("contact.formTitle") }}
               </v-card-title>
-              <v-card-text class="text-body-1 mb-6 px-0" style="color: #666;">
+              <v-card-text class="text-body-1 mb-6 px-0 form-description">
                 {{ $t("contact.formDescription") }}
               </v-card-text>
 
@@ -102,7 +104,11 @@
                       class="text-h6 py-4"
                     >
                       <v-icon start>mdi-send</v-icon>
-                      {{ isSubmitting ? $t("contact.submitting") : $t("contact.submitButton") }}
+                      {{
+                        isSubmitting
+                          ? $t("contact.submitting")
+                          : $t("contact.submitButton")
+                      }}
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -113,18 +119,26 @@
           <!-- Cards Side -->
           <v-col cols="12" lg="5">
             <v-row>
-              <v-col cols="12" md="4" lg="12" v-for="(card, index) in infoCards" :key="index">
-                <v-card 
-                  class="info-card text-center pa-6 h-100" 
-                  elevation="1" 
+              <v-col
+                cols="12"
+                md="4"
+                lg="12"
+                v-for="(card, index) in infoCards"
+                :key="index"
+              >
+                <v-card
+                  class="info-card text-center pa-6 h-100"
+                  elevation="1"
                   rounded="xl"
                   hover
                 >
                   <div class="info-icon text-h3 mb-4">{{ card.icon }}</div>
-                  <v-card-title class="text-h6 text-primary mb-3 justify-center">
+                  <v-card-title
+                    class="text-h6 text-primary mb-3 justify-center"
+                  >
                     {{ $t(card.title) }}
                   </v-card-title>
-                  <v-card-text class="text-body-2" style="color: #666;">
+                  <v-card-text class="text-body-2 card-description">
                     {{ $t(card.description) }}
                   </v-card-text>
                 </v-card>
@@ -142,7 +156,7 @@
         <v-card-title class="text-h5 text-primary mb-3 justify-center">
           {{ $t("contact.successTitle") }}
         </v-card-title>
-        <v-card-text class="text-body-1 mb-6" style="color: #666;">
+        <v-card-text class="text-body-1 mb-6 success-description">
           {{ $t("contact.successMessage") }}
         </v-card-text>
         <v-btn
@@ -176,20 +190,18 @@ const showSuccessModal = ref(false);
 const contactForm = ref();
 
 const formData = ref({
-  email: '',
-  subject: '',
-  message: ''
+  email: "",
+  subject: "",
+  message: "",
 });
 
 // Form validation rules
 const emailRules = [
-  (v: string) => !!v || t('contact.validation.emailRequired'),
-  (v: string) => /.+@.+\..+/.test(v) || t('contact.validation.emailValid')
+  (v: string) => !!v || t("contact.validation.emailRequired"),
+  (v: string) => /.+@.+\..+/.test(v) || t("contact.validation.emailValid"),
 ];
 
-const requiredRules = [
-  (v: string) => !!v || t('contact.validation.required')
-];
+const requiredRules = [(v: string) => !!v || t("contact.validation.required")];
 
 // Subject options for select
 const subjectOptions = computed(() => [
@@ -197,8 +209,14 @@ const subjectOptions = computed(() => [
   { title: t("contact.subjects.suggestion"), value: "suggestion" },
   { title: t("contact.subjects.bug_report"), value: "bug_report" },
   { title: t("contact.subjects.improvement"), value: "improvement" },
-  { title: t("contact.subjects.partnership_request"), value: "partnership_request" },
-  { title: t("contact.subjects.content_suggestion"), value: "content_suggestion" },
+  {
+    title: t("contact.subjects.partnership_request"),
+    value: "partnership_request",
+  },
+  {
+    title: t("contact.subjects.content_suggestion"),
+    value: "content_suggestion",
+  },
   { title: t("contact.subjects.other"), value: "other" },
 ]);
 
@@ -207,18 +225,18 @@ const infoCards = [
   {
     icon: "⚡",
     title: "contact.responseTime",
-    description: "contact.responseTimeText"
+    description: "contact.responseTimeText",
   },
   {
     icon: "🌍",
     title: "contact.support",
-    description: "contact.supportText"
+    description: "contact.supportText",
   },
   {
     icon: "💬",
     title: "contact.discord",
-    description: "contact.discordText"
-  }
+    description: "contact.discordText",
+  },
 ];
 
 const submitContactForm = async () => {
@@ -231,7 +249,7 @@ const submitContactForm = async () => {
   // Simulate form submission
   setTimeout(() => {
     showSuccessModal.value = true;
-    formData.value = { email: '', subject: '', message: '' };
+    formData.value = { email: "", subject: "", message: "" };
     contactForm.value.reset();
     isSubmitting.value = false;
   }, 2000);
@@ -257,10 +275,12 @@ const submitContactForm = async () => {
 .hero-title {
   font-size: 3rem !important;
   font-weight: 700 !important;
+  color: #00a1a7 !important;
 }
 
 .hero-subtitle {
   font-size: 1.3rem !important;
+  color: #666 !important;
 }
 
 /* Contact Section */
@@ -273,6 +293,7 @@ const submitContactForm = async () => {
 .form-card {
   border: 1px solid rgba(0, 161, 167, 0.1) !important;
   box-shadow: 0 8px 32px rgba(0, 161, 167, 0.1) !important;
+  background: white !important;
 }
 
 /* Info Cards */
@@ -280,6 +301,7 @@ const submitContactForm = async () => {
   transition: all 0.3s ease !important;
   border: 1px solid rgba(0, 161, 167, 0.1) !important;
   box-shadow: 0 4px 20px rgba(0, 161, 167, 0.08) !important;
+  background: white !important;
 }
 
 .info-card:hover {
@@ -301,16 +323,76 @@ const submitContactForm = async () => {
 /* Force primary color for text elements */
 .text-primary {
   color: #00a1a7 !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
-/* Form field customization */
+/* Force white background for dialog and buttons */
+:deep(.v-dialog .v-card) {
+  background: white !important;
+  color: #333 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:deep(.v-btn) {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Text color consistency with FAQ page */
+.form-description,
+.card-description,
+.success-description {
+  color: #666 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Force white background and Poppins font */
+:deep(.v-field__input) {
+  background: white !important;
+  color: #333 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:deep(.v-field) {
+  background: white !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:deep(.v-select__selection-text) {
+  color: #333 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:deep(.v-field__overlay) {
+  background: white !important;
+}
+
+:deep(.v-card) {
+  background: white !important;
+  color: #333 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:deep(.v-card-title),
+:deep(.v-card-text) {
+  color: inherit !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* Form field customization with primary border */
 :deep(.v-field--variant-outlined .v-field__outline) {
-  --v-field-border-color: rgb(var(--v-theme-primary));
-  --v-field-border-opacity: 0.38;
+  --v-field-border-color: #00a1a7;
+  --v-field-border-opacity: 1;
+  border-width: 2px !important;
 }
 
 :deep(.v-field--focused .v-field__outline) {
-  --v-field-border-color: rgb(var(--v-theme-primary));
+  --v-field-border-color: #008a8f;
+  --v-field-border-opacity: 1;
+  border-width: 2px !important;
+}
+
+:deep(.v-field--variant-outlined:hover .v-field__outline) {
+  --v-field-border-color: #008a8f;
   --v-field-border-opacity: 1;
 }
 
