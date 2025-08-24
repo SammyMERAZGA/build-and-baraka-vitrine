@@ -18,9 +18,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
-            -t buildbaraka-vitrine:latest \
-            .
+          docker build -t buildbaraka-vitrine:latest .
 
       - name: Save Docker image
         run: docker save buildbaraka-vitrine:latest | gzip > buildbaraka-vitrine.tar.gz
@@ -35,7 +33,7 @@ jobs:
           source: "buildbaraka-vitrine.tar.gz,docker-compose.yml"
           target: "/var/www/buildbaraka/vitrine/"
 
-      - name: Deploy on VPS
+      - name: Debug on VPS
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -43,22 +41,35 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            echo "📁 Vérification des fichiers sur le VPS"
+            ls -l /var/www/buildbaraka/vitrine/
+
+            echo "🐳 Vérification de docker et docker compose"
+            docker --version
+            docker compose version
+
+            echo "📦 Vérification images docker avant load"
+            docker images
+
+            echo "📥 Chargement de l'image"
+            docker load < /var/www/buildbaraka/vitrine/buildbaraka-vitrine.tar.gz
+
+            echo "📦 Images docker après load"
+            docker images
+
             cd /var/www/buildbaraka/vitrine/
 
-            # Stop existing container
+            echo "🛑 Stop conteneur existant si présent"
             docker compose down || true
 
-            # Load new image
-            docker load < buildbaraka-vitrine.tar.gz
-
-            # Start new container
+            echo "🚀 Lancement du nouveau conteneur"
             docker compose up -d
 
-            # Clean up
+            echo "🧹 Nettoyage"
             docker image prune -f
             rm buildbaraka-vitrine.tar.gz
 
-            # Reload nginx to ensure routing works
-            sudo systemctl reload nginx
+            echo "🔄 Reload nginx"
+            sudo systemctl reload nginx || echo "⚠️ nginx reload échoué"
 
             echo "✅ Deployment completed successfully!"
