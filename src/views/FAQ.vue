@@ -210,20 +210,14 @@ interface FAQItem {
 
 const faqData = computed(() => {
   try {
-    // Debug: log pour vérifier ce qui est récupéré
-    console.log("Current locale:", locale.value);
-    
     const currentMessages = messages.value[locale.value] as any;
-    console.log("Current messages:", currentMessages);
     
     if (currentMessages?.faqPage?.questions) {
-      console.log("FAQ questions found:", currentMessages.faqPage.questions);
       return currentMessages.faqPage.questions as FAQItem[];
     }
     
     return [];
   } catch (error) {
-    console.error("Error loading FAQ data:", error);
     return [];
   }
 });
