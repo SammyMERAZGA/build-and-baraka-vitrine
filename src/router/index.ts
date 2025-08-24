@@ -5,7 +5,7 @@ import {
 } from "vue-router";
 // Views
 import Home from "@/views/Home.vue";
-import Contact from "@/views/Contact.vue";
+import ContactPage from "@/views/ContactPage.vue";
 import Features from "@/views/Features.vue";
 import FAQ from "@/views/FAQ.vue";
 import NotFound from "@/views/NotFound.vue";
@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: "/", component: Home },
   { path: "/fonctionnalites", component: Features },
   { path: "/faq", component: FAQ },
-  { path: "/contact", component: Contact },
+  { path: "/contact", component: ContactPage },
   { path: "/:pathMatch(.*)*", component: NotFound },
 ];
 

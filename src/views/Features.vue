@@ -898,10 +898,10 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 12px 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 161, 167, 0.15);
   border-radius: 16px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(0, 161, 167, 0.2);
   transition: all 0.3s ease;
 }
 
@@ -914,12 +914,14 @@ onUnmounted(() => {
 .prayer-name {
   font-weight: 600;
   font-size: 0.9rem;
+  color: #333;
 }
 
 .prayer-time {
   font-family: "Courier New", monospace;
   font-weight: bold;
   font-size: 1rem;
+  color: #333;
 }
 
 .prayer-note {
@@ -999,12 +1001,14 @@ onUnmounted(() => {
 }
 
 .story-preview {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 161, 167, 0.15);
   padding: 6px 12px;
   border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 500;
   backdrop-filter: blur(10px);
+  color: #333;
+  border: 1px solid rgba(0, 161, 167, 0.2);
 }
 
 .story-count {
