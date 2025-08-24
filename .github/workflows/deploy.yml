@@ -23,17 +23,11 @@ jobs:
       - name: Save Docker image
         run: docker save buildbaraka-vitrine:latest | gzip > buildbaraka-vitrine.tar.gz
 
-      - name: Copy files to VPS
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USERNAME }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          port: ${{ secrets.VPS_PORT }}
-          source: "buildbaraka-vitrine.tar.gz,docker-compose.yml"
-          target: "/var/www/buildbaraka/vitrine/"
+      - name: Copy Docker image and docker-compose to VPS
+        run: |
+          scp -P ${{ secrets.VPS_PORT }} buildbaraka-vitrine.tar.gz docker-compose.yml ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_HOST }}:/var/www/buildbaraka/vitrine/
 
-      - name: Debug on VPS
+      - name: Deploy on VPS
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -41,6 +35,8 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            set -e
+
             echo "📁 Vérification des fichiers sur le VPS"
             ls -l /var/www/buildbaraka/vitrine/
 
@@ -51,7 +47,7 @@ jobs:
             echo "📦 Vérification images docker avant load"
             docker images
 
-            echo "📥 Chargement de l'image"
+            echo "📥 Chargement de l'image Docker"
             docker load < /var/www/buildbaraka/vitrine/buildbaraka-vitrine.tar.gz
 
             echo "📦 Images docker après load"
