@@ -1,5 +1,6 @@
 services:
   build-and-baraka-vitrine:
+    image: buildbaraka-vitrine:latest
     build:
       context: .
       dockerfile: Dockerfile
