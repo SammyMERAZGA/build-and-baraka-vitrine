@@ -44,30 +44,25 @@
     "title": "🚀 Entrepreneuriat & Liberté Financière",
     "description": "Transformez votre passion en business rentable ! Découvrez les secrets de l'entrepreneuriat halal et construisez votre empire numérique en respectant vos valeurs islamiques.",
     "strategies": {
-      "title": "Stratégies Halal",
-      "description": "Méthodes éprouvées pour générer des revenus conformes à l'Islam"
+      "title": "L'importance de la Baraka dans l'entrepreneuriat",
+      "description": "Comprendre le rôle de la Baraka pour bâtir un business prospère et béni"
     },
     "growth": {
-      "title": "Croissance Durable",
-      "description": "Développez votre business avec des principes éthiques et durables"
+      "title": "Choisir sa compétence numérique",
+      "description": "Identifiez et développez la compétence digitale qui vous correspond le mieux"
     },
     "community": {
-      "title": "Communauté",
-      "description": "Rejoignez un réseau d'entrepreneurs musulmans ambitieux"
+      "title": "Être productif et efficace",
+      "description": "Maîtrisez les techniques de productivité pour réussir dans vos projets"
     },
-    "ebookTitle": "🎁 Guide Gratuit : \"Les 7 Piliers de l'Entrepreneuriat Halal\"",
-    "ebookDescription": "Téléchargez notre ebook exclusif et découvrez comment lancer votre business en respectant les principes islamiques",
+    "ebookTitle": "🎁 Guide gratuit : \"Entreprendre dans le numérique avec Baraka\"",
+    "ebookDescription": "Téléchargez notre guide exclusif et découvrez comment créer votre business numérique en respectant les principes islamiques",
     "ebookButton": "📚 Télécharger Gratuitement"
   },
   "modal": {
-    "title": "📚 Télécharger l'Ebook Gratuit",
-    "description": "Entrez votre email pour recevoir le guide \"Les 7 Piliers de l'Entrepreneuriat Halal\"",
-    "emailPlaceholder": "Votre adresse email",
-    "submitButton": "📩 Envoyer",
-    "submitting": "⏳ Envoi...",
-    "privacyNote": "*Nous respectons votre vie privée. Pas de spam.",
-    "yopmailError": "Les adresses yopmail ne sont pas acceptées",
-    "successMessage": "Merci ! Vous allez recevoir l'ebook par email."
+    "title": "📚 Ebook Build and Baraka",
+    "description": "Découvrez les secrets de l'entrepreneuriat conforme aux principes islamiques avec notre guide complet.",
+    "downloadButton": "Télécharger Gratuitement"
   },
   "footer": {
     "description": "Build and Baraka - L'application musulmane complète",
@@ -265,5 +260,12 @@
     "successTitle": "Message envoyé !",
     "successMessage": "Merci pour votre message. Notre équipe vous répondra très prochainement.",
     "closeButton": "Fermer"
+  },
+  "notFound": {
+    "title": "Oops ! Page non trouvée",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée. Ne vous inquiétez pas, retrouvez-nous sur nos réseaux sociaux !",
+    "homeButton": "Retour à l'accueil",
+    "backButton": "Page précédente",
+    "socialText": "Suivez-nous sur nos réseaux sociaux :"
   }
 }

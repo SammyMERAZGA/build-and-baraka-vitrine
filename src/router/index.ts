@@ -8,12 +8,14 @@ import Home from "@/views/Home.vue";
 import Contact from "@/views/Contact.vue";
 import Features from "@/views/Features.vue";
 import FAQ from "@/views/FAQ.vue";
+import NotFound from "@/views/NotFound.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", component: Home },
   { path: "/features", component: Features },
   { path: "/faq", component: FAQ },
-  { path: "/contact", component: Contact }
+  { path: "/contact", component: Contact },
+  { path: "/:pathMatch(.*)*", component: NotFound }
 ];
 
 const router = createRouter({

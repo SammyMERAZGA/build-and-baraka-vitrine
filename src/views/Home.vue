@@ -35,7 +35,7 @@
         <div class="download-section">
           <p class="download-title">{{ $t("hero.downloadTitle") }}</p>
           <div class="store-buttons">
-            <a href="#" class="custom-store-button">
+            <a href="#" class="custom-store-button" @click.prevent="showSnackbar">
               <img
                 src="@/assets/images/googleplay.png"
                 alt="Google Play"
@@ -43,7 +43,7 @@
               />
               <span class="store-text">{{ $t("hero.googlePlay") }}</span>
             </a>
-            <a href="#" class="custom-store-button">
+            <a href="#" class="custom-store-button" @click.prevent="showSnackbar">
               <img
                 src="@/assets/images/applestore.png"
                 alt="App Store"
@@ -144,27 +144,25 @@
       >
         <div class="modal-content" @click.stop>
           <button class="modal-close" @click="showEbookModal = false">×</button>
-          <h3>{{ $t("modal.title") }}</h3>
-          <p>{{ $t("modal.description") }}</p>
-          <form @submit.prevent="submitEbookForm" class="ebook-form">
-            <input
-              v-model="email"
-              type="email"
-              :placeholder="$t('modal.emailPlaceholder')"
-              required
-              class="email-input"
+          <div class="ebook-preview">
+            <img 
+              src="@/assets/images/cover-ebook.jpg" 
+              alt="Build and Baraka - Guide Entrepreneuriat Halal"
+              class="ebook-cover"
             />
-            <button
-              type="submit"
-              class="submit-button"
-              :disabled="isSubmitting"
-            >
-              {{
-                isSubmitting ? $t("modal.submitting") : $t("modal.submitButton")
-              }}
-            </button>
-          </form>
-          <p class="privacy-note">{{ $t("modal.privacyNote") }}</p>
+            <div class="ebook-info">
+              <h3>{{ $t("modal.title") }}</h3>
+              <p>{{ $t("modal.description") }}</p>
+              <a 
+                href="/assets/pdf/ebook-buildandbaraka.pdf" 
+                download="Build-and-Baraka-Guide-Entrepreneuriat-Halal.pdf"
+                class="download-button"
+                @click="handleDownload"
+              >
+                📥 {{ $t("modal.downloadButton") }}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -184,6 +182,14 @@
 
     <!-- Footer -->
     <FooterComponent />
+    
+    <!-- Snackbar -->
+    <SnackbarComponent
+      :visible="snackbarVisible"
+      :message="snackbarMessage"
+      :type="snackbarType"
+      @close="closeSnackbar"
+    />
   </div>
 </template>
 
@@ -193,13 +199,17 @@ import { useI18n } from "vue-i18n";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
+import SnackbarComponent from "@/components/SnackbarComponent.vue";
 
 const { t } = useI18n();
 
 const showEbookModal = ref(false);
-const email = ref("");
-const isSubmitting = ref(false);
 const showScrollToTop = ref(false);
+
+// Snackbar state
+const snackbarVisible = ref(false);
+const snackbarMessage = ref("En cours de développement, bientôt disponible insh'Allah");
+const snackbarType = ref<'info' | 'success' | 'warning' | 'error'>('info');
 
 const handleScroll = () => {
   showScrollToTop.value = window.scrollY > 300;
@@ -212,21 +222,26 @@ const scrollToTop = () => {
   });
 };
 
-const submitEbookForm = async () => {
-  if (email.value.includes("yopmail")) {
-    alert(t("modal.yopmailError"));
-    return;
-  }
-
-  isSubmitting.value = true;
-
-  // Simulate form submission
+const handleDownload = () => {
+  showSnackbarWithMessage("Téléchargement commencé ! 📥", "success");
   setTimeout(() => {
-    alert(t("modal.successMessage"));
     showEbookModal.value = false;
-    email.value = "";
-    isSubmitting.value = false;
-  }, 2000);
+  }, 1000);
+};
+
+// Snackbar functions
+const showSnackbar = () => {
+  snackbarVisible.value = true;
+};
+
+const showSnackbarWithMessage = (message: string, type: 'info' | 'success' | 'warning' | 'error' = 'info') => {
+  snackbarMessage.value = message;
+  snackbarType.value = type;
+  snackbarVisible.value = true;
+};
+
+const closeSnackbar = () => {
+  snackbarVisible.value = false;
 };
 
 onMounted(() => {
@@ -544,7 +559,7 @@ onUnmounted(() => {
   border-radius: 20px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 2px solid transparent;
+  border: 2px solid rgba(0, 161, 167, 0.2);
   background: var(--card-bg);
   color: var(--color-text-primary);
 }
@@ -750,7 +765,7 @@ onUnmounted(() => {
   background: var(--modal-bg);
   padding: 40px;
   border-radius: 20px;
-  max-width: 500px;
+  max-width: 800px;
   width: 90%;
   position: relative;
   animation: slideInScale 0.3s ease;
@@ -797,23 +812,82 @@ onUnmounted(() => {
   line-height: 1.6;
 }
 
-.ebook-form {
+.ebook-preview {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.ebook-cover {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.ebook-cover:hover {
+  transform: scale(1.05);
+}
+
+.ebook-info {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-.email-input {
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
+.ebook-info h3 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin: 0;
 }
 
-.email-input:focus {
-  outline: none;
-  border-color: #00a1a7;
+.ebook-info p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.download-button {
+  background: linear-gradient(135deg, #00a1a7, #008a8f);
+  color: white;
+  padding: 15px 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 161, 167, 0.3);
+}
+
+.download-button:hover {
+  background: linear-gradient(135deg, #008a8f, #006f75);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 161, 167, 0.4);
+}
+
+/* Responsive Design for Ebook Modal */
+@media (max-width: 768px) {
+  .ebook-preview {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .ebook-cover {
+    width: 150px;
+  }
+
+  .ebook-info h3 {
+    font-size: 1.5rem;
+  }
+  
+  .download-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
 }
 
 .submit-button {

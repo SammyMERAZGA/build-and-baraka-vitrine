@@ -248,10 +248,6 @@
           </div>
 
           <div class="additional-card recipes-card">
-            <div class="honey-drops">
-              <div class="drop drop-1">🍯</div>
-              <div class="drop drop-2">🍯</div>
-            </div>
             <div class="card-content">
               <div class="feature-icon">🍯</div>
               <h3>{{ $t("featuresPage.recipes.title") }}</h3>
@@ -1509,38 +1505,6 @@ onUnmounted(() => {
   );
 }
 
-.honey-drops {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.drop {
-  position: absolute;
-  font-size: 1.2rem;
-  animation: honeyDrop 4s infinite ease-in-out;
-}
-
-.drop-1 {
-  animation-delay: 0s;
-}
-
-.drop-2 {
-  left: 20px;
-  animation-delay: 2s;
-}
-
-@keyframes honeyDrop {
-  0%,
-  100% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(40px) rotate(10deg);
-    opacity: 0.7;
-  }
-}
 
 /* Fundamentals Card */
 .fundamentals-card {

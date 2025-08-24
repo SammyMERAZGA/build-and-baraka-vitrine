@@ -67,26 +67,19 @@ onMounted(() => {
 
 @media (max-width: 768px) {
   .language-selector {
-    top: 15px;
-    right: 80px;
+    top: 90px;
+    right: 20px;
   }
   
   .language-select {
-    padding: 6px 12px;
-    font-size: 13px;
+    padding: 8px 12px;
+    font-size: 14px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .language-selector {
-    top: 15px;
-    right: 70px;
-  }
-  
-  .language-select {
-    padding: 6px 10px;
-    font-size: 12px;
-    min-width: 100px;
+    display: none;
   }
 }
 </style>
