@@ -38,7 +38,7 @@ onMounted(() => {
   position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .language-select {
@@ -68,12 +68,25 @@ onMounted(() => {
 @media (max-width: 768px) {
   .language-selector {
     top: 15px;
-    right: 15px;
+    right: 80px;
   }
   
   .language-select {
     padding: 6px 12px;
     font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .language-selector {
+    top: 15px;
+    right: 70px;
+  }
+  
+  .language-select {
+    padding: 6px 10px;
+    font-size: 12px;
+    min-width: 100px;
   }
 }
 </style>

@@ -852,8 +852,10 @@ onUnmounted(() => {
 
   .category-btn {
     flex: 1;
-    min-width: 0;
+    min-width: 120px;
     justify-content: center;
+    font-size: 0.9rem;
+    padding: 12px 16px;
   }
 
   .answer-content {
@@ -880,6 +882,17 @@ onUnmounted(() => {
 
   .faq-content-section {
     padding: 60px 15px;
+  }
+
+  .category-btn {
+    flex: none;
+    min-width: 100px;
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .category-btn .category-icon {
+    font-size: 1.2rem;
   }
 
   .faq-question {

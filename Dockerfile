@@ -1,29 +1,15 @@
-# Build stage
-FROM node:18-alpine AS build
+FROM node:22-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
-# Install dependencies
-RUN npm ci --only=production
+RUN yarn install --frozen-lockfile
 
-# Copy source code
 COPY . .
 
-# Build the application
-RUN npm run build
+RUN yarn build
 
-# Production stage
-FROM nginx:alpine AS production
+EXPOSE 3001
 
-# Copy built files to nginx
-COPY --from=build /app/dist /usr/share/nginx/html
-
-
-# Expose port
-EXPOSE 80
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["yarn", "preview", "--host", "0.0.0.0", "--port", "3001"]

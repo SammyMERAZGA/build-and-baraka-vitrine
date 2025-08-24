@@ -1,13 +1,33 @@
-version: '3.8'
-
 services:
   build-and-baraka-vitrine:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "3000:80"
+      - "127.0.0.1:3001:80" # sécurisé : accessible seulement en local (reverse proxy conseillé)
     environment:
       - NODE_ENV=production
     restart: unless-stopped
     container_name: build-and-baraka-vitrine
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+    read_only: true
+    tmpfs:
+      - /tmp
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
