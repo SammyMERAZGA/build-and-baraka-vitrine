@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-interface Props {
+export interface Props {
   message: string
   type?: 'info' | 'success' | 'warning' | 'error'
   duration?: number
