@@ -6,15 +6,6 @@
     <!-- Floating Navbar -->
     <NavbarComponent />
 
-    <!-- Floating Shapes Animation -->
-    <div class="floating-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
-      <div class="shape shape-5"></div>
-      <div class="shape shape-6"></div>
-    </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -49,17 +40,7 @@
                     $t("contact.emailLabel")
                   }}</label>
                   <div class="input-wrapper">
-                    <svg
-                      class="input-icon"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
-                      />
-                    </svg>
+                    <v-icon class="input-icon">mdi-email</v-icon>
                     <input
                       v-model="formData.email"
                       type="email"
@@ -67,17 +48,13 @@
                       class="form-input"
                       required
                     />
-                    <svg 
+                    <v-icon 
                       v-if="formData.email" 
                       @click="formData.email = ''"
-                      class="clear-icon" 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 24 24" 
-                      fill="currentColor"
+                      class="clear-icon"
                     >
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
+                      mdi-close
+                    </v-icon>
                   </div>
                   <div v-if="emailError" class="form-error">
                     {{ emailError }}
@@ -89,17 +66,7 @@
                     $t("contact.subjectLabel")
                   }}</label>
                   <div class="input-wrapper">
-                    <svg
-                      class="input-icon"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M17.63 5.84C17.27 5.33 16.67 5 16 5L5 5.01C3.9 5.01 3 5.9 3 7v10c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2L17.63 5.84z"
-                      />
-                    </svg>
+                    <v-icon class="input-icon">mdi-tag</v-icon>
                     <select
                       v-model="formData.subject"
                       class="form-select"
@@ -116,17 +83,13 @@
                         {{ option.title }}
                       </option>
                     </select>
-                    <svg 
+                    <v-icon 
                       v-if="formData.subject" 
                       @click="formData.subject = ''"
-                      class="clear-icon" 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 24 24" 
-                      fill="currentColor"
+                      class="clear-icon"
                     >
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
+                      mdi-close
+                    </v-icon>
                   </div>
                 </div>
 
@@ -135,17 +98,7 @@
                     $t("contact.messageLabel")
                   }}</label>
                   <div class="input-wrapper">
-                    <svg
-                      class="input-icon textarea-icon"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path
-                        d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
-                      />
-                    </svg>
+                    <v-icon class="input-icon textarea-icon">mdi-message-text</v-icon>
                     <textarea
                       v-model="formData.message"
                       :placeholder="$t('contact.messagePlaceholder')"
@@ -153,17 +106,13 @@
                       rows="6"
                       required
                     ></textarea>
-                    <svg 
+                    <v-icon 
                       v-if="formData.message" 
                       @click="formData.message = ''"
-                      class="clear-icon textarea-clear" 
-                      width="16" 
-                      height="16" 
-                      viewBox="0 0 24 24" 
-                      fill="currentColor"
+                      class="clear-icon textarea-clear"
                     >
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
-                    </svg>
+                      mdi-close
+                    </v-icon>
                   </div>
                 </div>
 
@@ -174,16 +123,9 @@
                   :class="{ loading: isSubmitting }"
                   style="background-color: #00a1a7 !important"
                 >
-                  <svg
-                    v-if="!isSubmitting"
-                    class="button-icon"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                  </svg>
+                  <v-icon v-if="!isSubmitting" class="button-icon">
+                    mdi-send
+                  </v-icon>
                   <div v-if="isSubmitting" class="loading-spinner"></div>
                   {{
                     isSubmitting
@@ -420,88 +362,6 @@ const submitContactForm = async () => {
   }
 }
 
-/* Floating Shapes Animation */
-.floating-shapes {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.shape {
-  position: absolute;
-  background: var(--shape-color);
-  animation: floatUp 15s linear infinite;
-}
-
-.shape-1 {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0s;
-  border-radius: 4px;
-}
-
-.shape-2 {
-  right: 15%;
-  width: 15px;
-  height: 15px;
-  animation-delay: -3s;
-  border-radius: 50%;
-}
-
-.shape-3 {
-  left: 20%;
-  width: 25px;
-  height: 25px;
-  animation-delay: -6s;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-.shape-4 {
-  right: 25%;
-  width: 18px;
-  height: 18px;
-  animation-delay: -9s;
-  border-radius: 8px;
-}
-
-.shape-5 {
-  left: 5%;
-  width: 22px;
-  height: 22px;
-  animation-delay: -12s;
-  border-radius: 50%;
-}
-
-.shape-6 {
-  right: 10%;
-  width: 16px;
-  height: 16px;
-  animation-delay: -15s;
-  border-radius: 2px;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100px) rotate(180deg);
-    opacity: 0;
-  }
-}
 
 /* Hero Section */
 .hero-section {
@@ -999,13 +859,5 @@ select option {
     min-width: auto;
   }
 
-  .shape {
-    transform: scale(0.8);
-  }
-
-  .shape-5,
-  .shape-6 {
-    display: none;
-  }
 }
 </style>
