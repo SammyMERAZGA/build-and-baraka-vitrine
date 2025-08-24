@@ -154,7 +154,7 @@
               <h3>{{ $t("modal.title") }}</h3>
               <p>{{ $t("modal.description") }}</p>
               <a 
-                href="/assets/pdf/ebook-buildandbaraka.pdf" 
+                href="https://buildbaraka.com/pdf/ebook-buildandbaraka.pdf" 
                 download="Build-and-Baraka-Guide-Entrepreneuriat-Halal.pdf"
                 class="download-button"
                 @click="handleDownload"
