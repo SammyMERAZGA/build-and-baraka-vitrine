@@ -33,19 +33,14 @@
                 </p>
               </div>
 
-              <div class="contact-form">
+              <form @submit.prevent="submitContactForm" class="contact-form">
                 <div class="form-group">
-                  <label class="form-label">{{
-                    $t("contact.emailLabel")
-                  }}</label>
-                  <v-text-field
+                  <label class="form-label">Email</label>
+                  <input
                     v-model="formData.email"
                     type="email"
-                    :placeholder="$t('contact.emailPlaceholder')"
-                    clearable
-                    outlined
-                    class="custom-text-field"
-                    hide-details
+                    placeholder="Votre email"
+                    class="form-input"
                     required
                   />
                   <div v-if="emailError" class="form-error">
@@ -54,59 +49,48 @@
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">{{
-                    $t("contact.subjectLabel")
-                  }}</label>
+                  <label class="form-label">Sujet</label>
                   <select
                     v-model="formData.subject"
                     class="form-select"
                     required
                   >
-                    <option value="" disabled>
-                      {{ $t("contact.subjectPlaceholder") }}
+                    <option value="" disabled>Choisir un sujet</option>
+                    <option value="GENERAL_FEEDBACK">
+                      Commentaires généraux
                     </option>
-                    <option
-                      v-for="option in subjectOptions"
-                      :key="option.value"
-                      :value="option.value"
-                    >
-                      {{ option.title }}
+                    <option value="SUGGESTION">Suggestion</option>
+                    <option value="BUG_REPORT">Rapport de bug</option>
+                    <option value="IMPROVEMENT">Amélioration</option>
+                    <option value="PARTNERSHIP_REQUEST">
+                      Demande de partenariat
                     </option>
+                    <option value="CONTENT_SUGGESTION">
+                      Suggestion de contenu
+                    </option>
+                    <option value="OTHER">Autre</option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">{{
-                    $t("contact.messageLabel")
-                  }}</label>
-                  <v-textarea
+                  <label class="form-label">Message</label>
+                  <textarea
                     v-model="formData.message"
-                    :placeholder="$t('contact.messagePlaceholder')"
-                    clearable
-                    outlined
+                    placeholder="Votre message"
+                    class="form-textarea"
                     rows="6"
-                    class="custom-textarea"
-                    hide-details
                     required
-                  />
+                  ></textarea>
                 </div>
 
-                <v-btn
-                  @click="submitContactForm"
-                  color="#00a1a7"
-                  large
-                  class="custom-submit-btn"
+                <button
+                  type="submit"
+                  class="submit-button"
                   :disabled="isSubmitting"
-                  :loading="isSubmitting"
-                  block
                 >
-                  {{
-                    isSubmitting
-                      ? $t("contact.submitting")
-                      : $t("contact.submitButton")
-                  }}
-                </v-btn>
-              </div>
+                  {{ isSubmitting ? "Envoi en cours..." : "Envoyer" }}
+                </button>
+              </form>
             </div>
           </div>
 
@@ -156,14 +140,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { useI18n } from "vue-i18n";
-import axios from "axios";
+import { ref } from "vue";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
-
-const { t } = useI18n();
 
 const isSubmitting = ref(false);
 const showSuccessModal = ref(false);
@@ -174,17 +154,6 @@ const formData = ref({
   subject: "",
   message: "",
 });
-
-// Subject options for select
-const subjectOptions = ref([
-  { title: "Commentaires généraux", value: "GENERAL_FEEDBACK" },
-  { title: "Suggestion", value: "SUGGESTION" },
-  { title: "Rapport de bug", value: "BUG_REPORT" },
-  { title: "Amélioration", value: "IMPROVEMENT" },
-  { title: "Demande de partenariat", value: "PARTNERSHIP_REQUEST" },
-  { title: "Suggestion de contenu", value: "CONTENT_SUGGESTION" },
-  { title: "Autre", value: "OTHER" },
-]);
 
 // Info cards data
 const infoCards = [
@@ -207,47 +176,17 @@ const infoCards = [
 
 // Email validation function
 const validateEmail = (email: string): boolean => {
-  // Basic email format validation
   const emailRegex = /.+@.+\..+/;
   if (!emailRegex.test(email)) {
-    emailError.value = t("contact.validation.emailValid");
+    emailError.value = "Email invalide";
     return false;
   }
-
-  // Block yopmail domains
-  const yopmailDomains = [
-    "yopmail.com",
-    "yopmail.fr",
-    "yopmail.net",
-    "cool.fr.nf",
-    "jetable.fr.nf",
-    "nospam.ze.tc",
-    "nomail.xl.cx",
-    "mega.zik.dj",
-    "speed.1s.fr",
-    "courriel.fr.nf",
-    "moncourrier.fr.nf",
-    "monemail.fr.nf",
-    "monmail.fr.nf",
-    "hide.biz.st",
-    "mymail.infos.st",
-  ];
-
-  const emailDomain = email.split("@")[1]?.toLowerCase();
-  if (yopmailDomains.includes(emailDomain)) {
-    emailError.value = t("contact.validation.emailBlocked");
-    return false;
-  }
-
+  
   emailError.value = "";
   return true;
 };
 
-const submitContactForm = async () => {
-  // Reset email error
-  emailError.value = "";
-
-  // Validate form
+const submitContactForm = () => {
   if (
     !formData.value.email ||
     !formData.value.subject ||
@@ -256,36 +195,29 @@ const submitContactForm = async () => {
     return;
   }
 
-  // Validate email
   if (!validateEmail(formData.value.email)) {
     return;
   }
 
   isSubmitting.value = true;
 
-  try {
-    const response = await axios.post(
-      "https://core.buildbaraka.com/api/contact",
-      {
-        email: formData.value.email,
-        subject: formData.value.subject,
-        message: formData.value.message,
-      }
-    );
-
-    if (response.status === 200) {
+  fetch("https://core.buildbaraka.com/api/contact", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData.value),
+  })
+    .then(() => {
       showSuccessModal.value = true;
       formData.value = { email: "", subject: "", message: "" };
-    } else {
-      console.error("Form submission failed");
-      // Handle error - could show an error message to user
-    }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    // Handle network error - could show an error message to user
-  } finally {
-    isSubmitting.value = false;
-  }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    })
+    .finally(() => {
+      isSubmitting.value = false;
+    });
 };
 </script>
 
@@ -666,6 +598,67 @@ const submitContactForm = async () => {
 .custom-textarea :deep(.v-messages__message) {
   color: #e74c3c !important;
   font-size: 0.85rem !important;
+}
+
+/* Native HTML Form Elements */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #00a1a7;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #00a1a7;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-button {
+  background: #00a1a7;
+  color: white;
+  border: none;
+  padding: 18px 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #008a8f;
+  transform: translateY(-2px);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 /* Responsive Design */
