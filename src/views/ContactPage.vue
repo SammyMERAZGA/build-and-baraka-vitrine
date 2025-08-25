@@ -130,21 +130,30 @@
       </div>
     </section>
 
-    <!-- Success Modal -->
-    <div
-      v-if="showSuccessModal"
-      class="modal-overlay"
-      @click="showSuccessModal = false"
+    <!-- Success Snackbar -->
+    <v-snackbar
+      v-model="showSuccessModal"
+      timeout="6000"
+      location="top"
+      color="success"
+      class="custom-snackbar"
     >
-      <div class="success-modal" @click.stop>
-        <div class="success-icon">✅</div>
-        <h3 class="success-title">{{ $t("contact.successTitle") }}</h3>
-        <p class="success-message">{{ $t("contact.successMessage") }}</p>
-        <button class="modal-button" @click="showSuccessModal = false">
-          {{ $t("contact.closeButton") }}
-        </button>
+      <div class="snackbar-content">
+        <v-icon class="snackbar-icon">mdi-check-circle</v-icon>
+        <div class="snackbar-text">
+          <div class="snackbar-title">{{ $t("contact.successTitle") }}</div>
+          <div class="snackbar-message">{{ $t("contact.successMessage") }}</div>
+        </div>
       </div>
-    </div>
+      <template v-slot:actions>
+        <v-btn
+          variant="text"
+          @click="showSuccessModal = false"
+        >
+          {{ $t("contact.closeButton") }}
+        </v-btn>
+      </template>
+    </v-snackbar>
 
     <!-- Footer -->
     <FooterComponent />
@@ -643,85 +652,43 @@ const submitContactForm = async () => {
   margin: 0;
 }
 
-/* Success Modal */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+/* Custom Snackbar Styling */
+.custom-snackbar :deep(.v-snackbar__wrapper) {
+  border-radius: 15px !important;
+  box-shadow: 0 10px 30px rgba(0, 161, 167, 0.2) !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+.snackbar-content {
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease-out;
+  gap: 15px;
 }
 
-.success-modal {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  animation: slideIn 0.3s ease-out;
+.snackbar-icon {
+  font-size: 1.5rem !important;
+  color: white !important;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.snackbar-text {
+  flex: 1;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.success-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-}
-
-.success-title {
-  font-size: 1.5rem;
+.snackbar-title {
   font-weight: 600;
-  color: var(--color-text-primary, #333);
-  margin-bottom: 15px;
+  font-size: 1rem;
+  margin-bottom: 4px;
 }
 
-.success-message {
-  color: var(--color-text-secondary, #666);
-  line-height: 1.6;
-  margin-bottom: 30px;
+.snackbar-message {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.4;
 }
 
-.modal-button {
-  background: var(--color-primary);
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.modal-button:hover {
-  background: var(--color-primary-dark, #008a8f);
-  transform: translateY(-2px);
+.custom-snackbar :deep(.v-btn) {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 500 !important;
 }
 
 /* Custom Vuetify Components Styling */
