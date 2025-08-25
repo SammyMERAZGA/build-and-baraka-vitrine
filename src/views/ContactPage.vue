@@ -6,7 +6,6 @@
     <!-- Floating Navbar -->
     <NavbarComponent />
 
-
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="hero-content">
@@ -39,81 +38,57 @@
                   <label class="form-label">{{
                     $t("contact.emailLabel")
                   }}</label>
-                  <div class="input-wrapper">
-                    <v-icon class="input-icon">mdi-email</v-icon>
-                    <input
-                      v-model="formData.email"
-                      type="email"
-                      :placeholder="$t('contact.emailPlaceholder')"
-                      class="form-input"
-                      required
-                    />
-                    <v-icon 
-                      v-if="formData.email" 
-                      @click="formData.email = ''"
-                      class="clear-icon"
-                    >
-                      mdi-close
-                    </v-icon>
-                  </div>
-                  <div v-if="emailError" class="form-error">
-                    {{ emailError }}
-                  </div>
+                  <v-text-field
+                    v-model="formData.email"
+                    type="email"
+                    :placeholder="$t('contact.emailPlaceholder')"
+                    prepend-inner-icon="mdi-email"
+                    :clearable="!!formData.email"
+                    variant="outlined"
+                    density="comfortable"
+                    class="custom-text-field"
+                    hide-details="auto"
+                    :error-messages="emailError"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">{{
                     $t("contact.subjectLabel")
                   }}</label>
-                  <div class="input-wrapper">
-                    <v-icon class="input-icon">mdi-tag</v-icon>
-                    <select
-                      v-model="formData.subject"
-                      class="form-select"
-                      required
-                    >
-                      <option value="" disabled>
-                        {{ $t("contact.subjectPlaceholder") }}
-                      </option>
-                      <option
-                        v-for="option in subjectOptions"
-                        :key="option.value"
-                        :value="option.value"
-                      >
-                        {{ option.title }}
-                      </option>
-                    </select>
-                    <v-icon 
-                      v-if="formData.subject" 
-                      @click="formData.subject = ''"
-                      class="clear-icon"
-                    >
-                      mdi-close
-                    </v-icon>
-                  </div>
+                  <v-select
+                    v-model="formData.subject"
+                    :items="subjectOptions"
+                    item-title="title"
+                    item-value="value"
+                    :placeholder="$t('contact.subjectPlaceholder')"
+                    prepend-inner-icon="mdi-tag"
+                    :clearable="!!formData.subject"
+                    variant="outlined"
+                    density="comfortable"
+                    class="custom-select"
+                    hide-details="auto"
+                    required
+                  />
                 </div>
 
                 <div class="form-group">
                   <label class="form-label">{{
                     $t("contact.messageLabel")
                   }}</label>
-                  <div class="input-wrapper">
-                    <v-icon class="input-icon textarea-icon">mdi-message-text</v-icon>
-                    <textarea
-                      v-model="formData.message"
-                      :placeholder="$t('contact.messagePlaceholder')"
-                      class="form-textarea"
-                      rows="6"
-                      required
-                    ></textarea>
-                    <v-icon 
-                      v-if="formData.message" 
-                      @click="formData.message = ''"
-                      class="clear-icon textarea-clear"
-                    >
-                      mdi-close
-                    </v-icon>
-                  </div>
+                  <v-textarea
+                    v-model="formData.message"
+                    :placeholder="$t('contact.messagePlaceholder')"
+                    prepend-inner-icon="mdi-message-text"
+                    :clearable="!!formData.message"
+                    variant="outlined"
+                    density="comfortable"
+                    rows="6"
+                    class="custom-textarea"
+                    hide-details="auto"
+                    required
+                  />
                 </div>
 
                 <button
@@ -361,7 +336,6 @@ const submitContactForm = async () => {
     transform: translateY(-20px);
   }
 }
-
 
 /* Hero Section */
 .hero-section {
@@ -750,42 +724,120 @@ const submitContactForm = async () => {
   transform: translateY(-2px);
 }
 
-/* Additional Select Styling */
-.form-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 15px center;
-  background-size: 16px;
-}
-
-select {
+/* Custom Vuetify Components Styling */
+.custom-text-field :deep(.v-field) {
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 12px !important;
   background: white !important;
-  color: #333 !important;
+  font-family: "Poppins", sans-serif;
 }
 
-select option {
+.custom-text-field :deep(.v-field__input) {
+  padding: 15px 50px 15px 50px !important;
+  font-size: 1rem !important;
+  color: var(--color-text-primary, #333) !important;
+  min-height: 50px !important;
+}
+
+.custom-text-field :deep(.v-field--focused) {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
+}
+
+.custom-text-field :deep(.v-field__prepend-inner) {
+  padding-left: 15px !important;
+}
+
+.custom-text-field :deep(.v-field__prepend-inner .v-icon) {
+  color: #999 !important;
+}
+
+.custom-text-field :deep(.v-field__append-inner) {
+  padding-right: 15px !important;
+}
+
+.custom-select :deep(.v-field) {
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 12px !important;
   background: white !important;
-  color: #333 !important;
+  font-family: "Poppins", sans-serif;
 }
 
-.clear-icon {
-  position: absolute;
-  right: 15px;
-  color: #999;
-  cursor: pointer;
-  z-index: 2;
-  transition: color 0.3s ease;
+.custom-select :deep(.v-field__input) {
+  padding: 15px 50px 15px 50px !important;
+  font-size: 1rem !important;
+  color: var(--color-text-primary, #333) !important;
+  min-height: 50px !important;
 }
 
-.clear-icon:hover {
-  color: #666;
+.custom-select :deep(.v-field--focused) {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
 }
 
-.textarea-clear {
-  top: 15px;
+.custom-select :deep(.v-field__prepend-inner) {
+  padding-left: 15px !important;
+}
+
+.custom-select :deep(.v-field__prepend-inner .v-icon) {
+  color: #999 !important;
+}
+
+.custom-select :deep(.v-field__append-inner) {
+  padding-right: 15px !important;
+}
+
+.custom-textarea :deep(.v-field) {
+  border: 2px solid var(--color-primary) !important;
+  border-radius: 12px !important;
+  background: white !important;
+  font-family: "Poppins", sans-serif;
+}
+
+.custom-textarea :deep(.v-field__input) {
+  padding: 15px 50px 15px 50px !important;
+  font-size: 1rem !important;
+  color: var(--color-text-primary, #333) !important;
+}
+
+.custom-textarea :deep(.v-field--focused) {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
+}
+
+.custom-textarea :deep(.v-field__prepend-inner) {
+  padding-left: 15px !important;
+  padding-top: 15px !important;
+}
+
+.custom-textarea :deep(.v-field__prepend-inner .v-icon) {
+  color: #999 !important;
+}
+
+.custom-textarea :deep(.v-field__append-inner) {
+  padding-right: 15px !important;
+  padding-top: 15px !important;
+}
+
+/* Hide default Vuetify input styles that conflict */
+.custom-text-field :deep(.v-field__outline),
+.custom-select :deep(.v-field__outline),
+.custom-textarea :deep(.v-field__outline) {
+  display: none !important;
+}
+
+.custom-text-field :deep(.v-input__details),
+.custom-select :deep(.v-input__details),
+.custom-textarea :deep(.v-input__details) {
+  padding-top: 8px !important;
+  padding-left: 0 !important;
+}
+
+.custom-text-field :deep(.v-messages__message),
+.custom-select :deep(.v-messages__message),
+.custom-textarea :deep(.v-messages__message) {
+  color: #e74c3c !important;
+  font-size: 0.85rem !important;
 }
 
 /* Responsive Design */
@@ -858,6 +910,5 @@ select option {
   .info-card {
     min-width: auto;
   }
-
 }
 </style>
