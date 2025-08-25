@@ -199,6 +199,11 @@ const submitContactForm = () => {
     return;
   }
 
+  if (formData.value.message.length < 10) {
+    alert("Le message doit faire au moins 10 caractères");
+    return;
+  }
+
   isSubmitting.value = true;
 
   fetch("https://core.buildbaraka.com/api/contact", {
