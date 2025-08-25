@@ -33,7 +33,7 @@
                 </p>
               </div>
 
-              <v-form @submit.prevent="submitContactForm" class="contact-form">
+              <div class="contact-form">
                 <v-text-field
                   v-model="formData.email"
                   type="email"
@@ -79,7 +79,7 @@
                 />
 
                 <v-btn
-                  type="submit"
+                  @click="submitContactForm"
                   color="#00a1a7"
                   variant="elevated"
                   size="large"
@@ -95,7 +95,7 @@
                       : $t("contact.submitButton")
                   }}
                 </v-btn>
-              </v-form>
+              </div>
             </div>
           </div>
 
