@@ -41,14 +41,14 @@
                     type="email"
                     :placeholder="$t('contact.emailPlaceholder')"
                     prepend-inner-icon="mdi-email"
-                    :clearable="!!formData.email"
+                    clearable
                     variant="outlined"
                     density="comfortable"
                     class="custom-text-field"
                     hide-details="auto"
-                    :error-messages="emailError"
                     required
                   />
+                  <div v-if="emailError" class="form-error">{{ emailError }}</div>
                 </div>
 
                 <div class="form-group">
@@ -60,7 +60,7 @@
                     item-value="value"
                     :placeholder="$t('contact.subjectPlaceholder')"
                     prepend-inner-icon="mdi-tag"
-                    :clearable="!!formData.subject"
+                    clearable
                     variant="outlined"
                     density="comfortable"
                     class="custom-select"
@@ -75,7 +75,7 @@
                     v-model="formData.message"
                     :placeholder="$t('contact.messagePlaceholder')"
                     prepend-inner-icon="mdi-message-text"
-                    :clearable="!!formData.message"
+                    clearable
                     variant="outlined"
                     density="comfortable"
                     rows="6"
@@ -93,7 +93,7 @@
                   class="custom-submit-btn"
                   :disabled="isSubmitting"
                   :loading="isSubmitting"
-                  :prepend-icon="isSubmitting ? '' : 'mdi-send'"
+                  prepend-icon="mdi-send"
                   block
                 >
                   {{
@@ -483,6 +483,12 @@ const submitContactForm = async () => {
   font-weight: 600;
   color: var(--color-text-primary, #333);
   font-size: 0.95rem;
+}
+
+.form-error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
 }
 
 /* Custom Submit Button */
