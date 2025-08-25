@@ -302,26 +302,7 @@ const submitContactForm = async () => {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(0, 161, 167, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(0, 161, 167, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(0, 161, 167, 0.08) 0%, transparent 50%),
-    linear-gradient(135deg, rgba(0, 161, 167, 0.02) 0%, transparent 100%);
-}
-
-@keyframes backgroundFloat {
-  0%, 100% {
-    background-position: 0% 50%, 100% 0%, 50% 100%, 0% 0%;
-  }
-  25% {
-    background-position: 10% 40%, 90% 10%, 40% 90%, 10% 10%;
-  }
-  50% {
-    background-position: 20% 60%, 80% 20%, 60% 80%, 20% 20%;
-  }
-  75% {
-    background-position: 10% 40%, 90% 10%, 40% 90%, 10% 10%;
-  }
+  background: #f8f9fa;
 }
 
 
@@ -348,17 +329,6 @@ const submitContactForm = async () => {
   height: 80px;
   width: auto;
   margin-bottom: 20px;
-  animation: logoFloat 3s ease-in-out infinite;
-}
-
-@keyframes logoFloat {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-8px) rotate(1deg);
-  }
 }
 
 .hero-title {
@@ -366,25 +336,12 @@ const submitContactForm = async () => {
   font-weight: 700;
   color: #00a1a7 !important;
   margin-bottom: 15px;
-  animation: slideInUp 1s ease-out;
 }
 
 .hero-subtitle {
   font-size: 1.3rem;
-  color: var(--color-text-secondary, #666);
+  color: #666;
   margin-bottom: 30px;
-  animation: slideInUp 1s ease-out 0.2s both;
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .container {
@@ -430,18 +387,7 @@ const submitContactForm = async () => {
   left: 0;
   right: 0;
   height: 4px;
-  background: var(--color-primary);
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  background: #00a1a7;
 }
 
 .form-header {
@@ -451,12 +397,12 @@ const submitContactForm = async () => {
 .form-title {
   font-size: 2rem;
   font-weight: 600;
-  color: var(--color-text-primary, #333);
+  color: #333;
   margin-bottom: 15px;
 }
 
 .form-description {
-  color: var(--color-text-secondary, #666);
+  color: #666;
   font-size: 1.1rem;
   line-height: 1.6;
 }
@@ -476,7 +422,7 @@ const submitContactForm = async () => {
 
 .form-label {
   font-weight: 600;
-  color: var(--color-text-primary, #333);
+  color: #333;
   font-size: 0.95rem;
 }
 
@@ -529,7 +475,7 @@ const submitContactForm = async () => {
 .info-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 40px rgba(0, 161, 167, 0.12);
-  border-color: var(--color-primary);
+  border-color: #00a1a7;
 }
 
 .info-icon {
@@ -540,12 +486,12 @@ const submitContactForm = async () => {
 .info-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--color-text-primary, #333);
+  color: #333;
   margin-bottom: 15px;
 }
 
 .info-description {
-  color: var(--color-text-secondary, #666);
+  color: #666;
   line-height: 1.6;
   margin: 0;
 }
@@ -591,7 +537,7 @@ const submitContactForm = async () => {
 
 /* Custom Vuetify Components Styling */
 .custom-text-field :deep(.v-field) {
-  border: 2px solid var(--color-primary) !important;
+  border: 2px solid #00a1a7 !important;
   border-radius: 12px !important;
   background: white !important;
   font-family: "Poppins", sans-serif;
@@ -600,12 +546,12 @@ const submitContactForm = async () => {
 .custom-text-field :deep(.v-field__input) {
   padding: 15px 50px 15px 50px !important;
   font-size: 1rem !important;
-  color: var(--color-text-primary, #333) !important;
+  color: #333 !important;
   min-height: 50px !important;
 }
 
 .custom-text-field :deep(.v-field--focused) {
-  border-color: var(--color-primary) !important;
+  border-color: #00a1a7 !important;
   box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
 }
 
@@ -622,7 +568,7 @@ const submitContactForm = async () => {
 }
 
 .custom-select :deep(.v-field) {
-  border: 2px solid var(--color-primary) !important;
+  border: 2px solid #00a1a7 !important;
   border-radius: 12px !important;
   background: white !important;
   font-family: "Poppins", sans-serif;
@@ -631,12 +577,12 @@ const submitContactForm = async () => {
 .custom-select :deep(.v-field__input) {
   padding: 15px 50px 15px 50px !important;
   font-size: 1rem !important;
-  color: var(--color-text-primary, #333) !important;
+  color: #333 !important;
   min-height: 50px !important;
 }
 
 .custom-select :deep(.v-field--focused) {
-  border-color: var(--color-primary) !important;
+  border-color: #00a1a7 !important;
   box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
 }
 
@@ -653,7 +599,7 @@ const submitContactForm = async () => {
 }
 
 .custom-textarea :deep(.v-field) {
-  border: 2px solid var(--color-primary) !important;
+  border: 2px solid #00a1a7 !important;
   border-radius: 12px !important;
   background: white !important;
   font-family: "Poppins", sans-serif;
@@ -662,11 +608,11 @@ const submitContactForm = async () => {
 .custom-textarea :deep(.v-field__input) {
   padding: 15px 50px 15px 50px !important;
   font-size: 1rem !important;
-  color: var(--color-text-primary, #333) !important;
+  color: #333 !important;
 }
 
 .custom-textarea :deep(.v-field--focused) {
-  border-color: var(--color-primary) !important;
+  border-color: #00a1a7 !important;
   box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
 }
 
