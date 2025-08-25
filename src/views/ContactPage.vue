@@ -176,7 +176,6 @@ const formData = ref({
 
 // Subject options for select
 const subjectOptions = computed(() => [
-  { title: t("contact.subjectPlaceholder"), value: "", disabled: true },
   { title: t("contact.subjects.general_feedback"), value: "GENERAL_FEEDBACK" },
   { title: t("contact.subjects.suggestion"), value: "SUGGESTION" },
   { title: t("contact.subjects.bug_report"), value: "BUG_REPORT" },
@@ -308,8 +307,6 @@ const submitContactForm = async () => {
     radial-gradient(circle at 80% 20%, rgba(0, 161, 167, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 40% 80%, rgba(0, 161, 167, 0.08) 0%, transparent 50%),
     linear-gradient(135deg, rgba(0, 161, 167, 0.02) 0%, transparent 100%);
-  background-attachment: fixed;
-  animation: backgroundFloat 25s ease-in-out infinite;
 }
 
 @keyframes backgroundFloat {
@@ -401,8 +398,7 @@ const submitContactForm = async () => {
   padding: 80px 20px;
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .contact-layout {
@@ -418,14 +414,13 @@ const submitContactForm = async () => {
 }
 
 .form-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 25px;
   padding: 50px;
   box-shadow: 0 15px 50px rgba(0, 161, 167, 0.15);
   border: 1px solid rgba(0, 161, 167, 0.2);
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(10px);
 }
 
 .form-card::before {
@@ -522,14 +517,13 @@ const submitContactForm = async () => {
 }
 
 .info-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   padding: 30px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 161, 167, 0.12);
   border: 1px solid rgba(0, 161, 167, 0.2);
   transition: all 0.3s ease;
-  backdrop-filter: blur(8px);
 }
 
 .info-card:hover {
