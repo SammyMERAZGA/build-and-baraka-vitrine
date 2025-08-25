@@ -33,82 +33,69 @@
                 </p>
               </div>
 
-              <form @submit.prevent="submitContactForm" class="contact-form">
-                <div class="form-group">
-                  <label class="form-label">{{
-                    $t("contact.emailLabel")
-                  }}</label>
-                  <v-text-field
-                    v-model="formData.email"
-                    type="email"
-                    :placeholder="$t('contact.emailPlaceholder')"
-                    prepend-inner-icon="mdi-email"
-                    :clearable="!!formData.email"
-                    variant="outlined"
-                    density="comfortable"
-                    class="custom-text-field"
-                    hide-details="auto"
-                    :error-messages="emailError"
-                    required
-                  />
-                </div>
+              <v-form @submit.prevent="submitContactForm" class="contact-form">
+                <v-text-field
+                  v-model="formData.email"
+                  type="email"
+                  :label="$t('contact.emailLabel')"
+                  :placeholder="$t('contact.emailPlaceholder')"
+                  prepend-inner-icon="mdi-email"
+                  :clearable="!!formData.email"
+                  variant="outlined"
+                  density="comfortable"
+                  class="custom-text-field mb-6"
+                  hide-details="auto"
+                  :error-messages="emailError"
+                  required
+                />
 
-                <div class="form-group">
-                  <label class="form-label">{{
-                    $t("contact.subjectLabel")
-                  }}</label>
-                  <v-select
-                    v-model="formData.subject"
-                    :items="subjectOptions"
-                    item-title="title"
-                    item-value="value"
-                    :placeholder="$t('contact.subjectPlaceholder')"
-                    prepend-inner-icon="mdi-tag"
-                    :clearable="!!formData.subject"
-                    variant="outlined"
-                    density="comfortable"
-                    class="custom-select"
-                    hide-details="auto"
-                    required
-                  />
-                </div>
+                <v-select
+                  v-model="formData.subject"
+                  :items="subjectOptions"
+                  item-title="title"
+                  item-value="value"
+                  :label="$t('contact.subjectLabel')"
+                  prepend-inner-icon="mdi-tag"
+                  :clearable="!!formData.subject"
+                  variant="outlined"
+                  density="comfortable"
+                  class="custom-select mb-6"
+                  hide-details="auto"
+                  required
+                />
 
-                <div class="form-group">
-                  <label class="form-label">{{
-                    $t("contact.messageLabel")
-                  }}</label>
-                  <v-textarea
-                    v-model="formData.message"
-                    :placeholder="$t('contact.messagePlaceholder')"
-                    prepend-inner-icon="mdi-message-text"
-                    :clearable="!!formData.message"
-                    variant="outlined"
-                    density="comfortable"
-                    rows="6"
-                    class="custom-textarea"
-                    hide-details="auto"
-                    required
-                  />
-                </div>
+                <v-textarea
+                  v-model="formData.message"
+                  :label="$t('contact.messageLabel')"
+                  :placeholder="$t('contact.messagePlaceholder')"
+                  prepend-inner-icon="mdi-message-text"
+                  :clearable="!!formData.message"
+                  variant="outlined"
+                  density="comfortable"
+                  rows="6"
+                  class="custom-textarea mb-6"
+                  hide-details="auto"
+                  required
+                />
 
-                <button
+                <v-btn
                   type="submit"
-                  class="submit-button"
+                  color="#00a1a7"
+                  variant="elevated"
+                  size="large"
+                  class="custom-submit-btn"
                   :disabled="isSubmitting"
-                  :class="{ loading: isSubmitting }"
-                  style="background-color: #00a1a7 !important"
+                  :loading="isSubmitting"
+                  :prepend-icon="isSubmitting ? '' : 'mdi-send'"
+                  block
                 >
-                  <v-icon v-if="!isSubmitting" class="button-icon">
-                    mdi-send
-                  </v-icon>
-                  <div v-if="isSubmitting" class="loading-spinner"></div>
                   {{
                     isSubmitting
                       ? $t("contact.submitting")
                       : $t("contact.submitButton")
                   }}
-                </button>
-              </form>
+                </v-btn>
+              </v-form>
             </div>
           </div>
 
@@ -182,6 +169,7 @@ const formData = ref({
 
 // Subject options for select
 const subjectOptions = computed(() => [
+  { title: t("contact.subjectPlaceholder"), value: "", disabled: true },
   { title: t("contact.subjects.general_feedback"), value: "GENERAL_FEEDBACK" },
   { title: t("contact.subjects.suggestion"), value: "SUGGESTION" },
   { title: t("contact.subjects.bug_report"), value: "BUG_REPORT" },
@@ -486,123 +474,23 @@ const submitContactForm = async () => {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 25px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+/* Custom Submit Button */
+.custom-submit-btn {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  border-radius: 12px !important;
+  padding: 18px 30px !important;
+  margin-top: 20px !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
 }
 
-.form-label {
-  font-weight: 600;
-  color: var(--color-text-primary, #333);
-  font-size: 0.95rem;
-}
-
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-icon {
-  position: absolute;
-  left: 15px;
-  color: #999;
-  z-index: 1;
-}
-
-.textarea-icon {
-  top: 15px;
-}
-
-.form-input,
-.form-select,
-.form-textarea {
-  width: 100%;
-  padding: 15px 50px 15px 45px;
-  border: 2px solid var(--color-primary);
-  border-radius: 12px;
-  font-size: 1rem;
-  background: white !important;
-  color: var(--color-text-primary, #333) !important;
-  font-family: "Poppins", sans-serif;
-  transition: all 0.3s ease;
-}
-
-.form-select option {
-  background: white !important;
-  color: #333 !important;
-  padding: 10px;
-}
-
-.form-input:focus,
-.form-select:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-  padding-top: 15px;
-}
-
-.form-error {
-  color: #e74c3c;
-  font-size: 0.85rem;
-  margin-top: 5px;
-}
-
-.submit-button {
-  background: #00a1a7 !important;
-  color: white;
-  border: none;
-  padding: 18px 30px;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-  margin-top: 20px;
-}
-
-.submit-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 161, 167, 0.3);
-  background: #008a8f !important;
-}
-
-.submit-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid transparent;
-  border-top: 2px solid currentColor;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.custom-submit-btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 30px rgba(0, 161, 167, 0.3) !important;
 }
 
 /* Info Section */
