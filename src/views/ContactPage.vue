@@ -34,49 +34,56 @@
               </div>
 
               <div class="contact-form">
-                <v-text-field
-                  v-model="formData.email"
-                  type="email"
-                  :label="$t('contact.emailLabel')"
-                  :placeholder="$t('contact.emailPlaceholder')"
-                  prepend-inner-icon="mdi-email"
-                  :clearable="!!formData.email"
-                  variant="outlined"
-                  density="comfortable"
-                  class="custom-text-field mb-6"
-                  hide-details="auto"
-                  :error-messages="emailError"
-                  required
-                />
+                <div class="form-group">
+                  <label class="form-label">{{ $t("contact.emailLabel") }}</label>
+                  <v-text-field
+                    v-model="formData.email"
+                    type="email"
+                    :placeholder="$t('contact.emailPlaceholder')"
+                    prepend-inner-icon="mdi-email"
+                    :clearable="!!formData.email"
+                    variant="outlined"
+                    density="comfortable"
+                    class="custom-text-field"
+                    hide-details="auto"
+                    :error-messages="emailError"
+                    required
+                  />
+                </div>
 
-                <v-select
-                  v-model="formData.subject"
-                  :items="subjectOptions"
-                  item-title="title"
-                  item-value="value"
-                  :label="$t('contact.subjectLabel')"
-                  prepend-inner-icon="mdi-tag"
-                  :clearable="!!formData.subject"
-                  variant="outlined"
-                  density="comfortable"
-                  class="custom-select mb-6"
-                  hide-details="auto"
-                  required
-                />
+                <div class="form-group">
+                  <label class="form-label">{{ $t("contact.subjectLabel") }}</label>
+                  <v-select
+                    v-model="formData.subject"
+                    :items="subjectOptions"
+                    item-title="title"
+                    item-value="value"
+                    :placeholder="$t('contact.subjectPlaceholder')"
+                    prepend-inner-icon="mdi-tag"
+                    :clearable="!!formData.subject"
+                    variant="outlined"
+                    density="comfortable"
+                    class="custom-select"
+                    hide-details="auto"
+                    required
+                  />
+                </div>
 
-                <v-textarea
-                  v-model="formData.message"
-                  :label="$t('contact.messageLabel')"
-                  :placeholder="$t('contact.messagePlaceholder')"
-                  prepend-inner-icon="mdi-message-text"
-                  :clearable="!!formData.message"
-                  variant="outlined"
-                  density="comfortable"
-                  rows="6"
-                  class="custom-textarea mb-6"
-                  hide-details="auto"
-                  required
-                />
+                <div class="form-group">
+                  <label class="form-label">{{ $t("contact.messageLabel") }}</label>
+                  <v-textarea
+                    v-model="formData.message"
+                    :placeholder="$t('contact.messagePlaceholder')"
+                    prepend-inner-icon="mdi-message-text"
+                    :clearable="!!formData.message"
+                    variant="outlined"
+                    density="comfortable"
+                    rows="6"
+                    class="custom-textarea"
+                    hide-details="auto"
+                    required
+                  />
+                </div>
 
                 <v-btn
                   @click="submitContactForm"
@@ -296,43 +303,30 @@ const submitContactForm = async () => {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 161, 167, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 161, 167, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(0, 161, 167, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 161, 167, 0.02) 0%, transparent 100%);
+  background-attachment: fixed;
+  animation: backgroundFloat 25s ease-in-out infinite;
 }
 
-.contact::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(
-      circle at 20% 50%,
-      rgba(0, 161, 167, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(0, 161, 167, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 40% 80%,
-      rgba(0, 161, 167, 0.08) 0%,
-      transparent 50%
-    );
-  pointer-events: none;
-  animation: float 20s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+@keyframes backgroundFloat {
+  0%, 100% {
+    background-position: 0% 50%, 100% 0%, 50% 100%, 0% 0%;
+  }
+  25% {
+    background-position: 10% 40%, 90% 10%, 40% 90%, 10% 10%;
   }
   50% {
-    transform: translateY(-20px);
+    background-position: 20% 60%, 80% 20%, 60% 80%, 20% 20%;
+  }
+  75% {
+    background-position: 10% 40%, 90% 10%, 40% 90%, 10% 10%;
   }
 }
+
 
 /* Hero Section */
 .hero-section {
@@ -407,7 +401,8 @@ const submitContactForm = async () => {
   padding: 80px 20px;
   position: relative;
   z-index: 1;
-  background: var(--color-bg-secondary);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 }
 
 .contact-layout {
@@ -423,13 +418,14 @@ const submitContactForm = async () => {
 }
 
 .form-card {
-  background: var(--card-bg, white);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 25px;
   padding: 50px;
-  box-shadow: 0 15px 50px rgba(0, 161, 167, 0.1);
-  border: 1px solid rgba(0, 161, 167, 0.1);
+  box-shadow: 0 15px 50px rgba(0, 161, 167, 0.15);
+  border: 1px solid rgba(0, 161, 167, 0.2);
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .form-card::before {
@@ -474,6 +470,19 @@ const submitContactForm = async () => {
 .contact-form {
   display: flex;
   flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--color-text-primary, #333);
+  font-size: 0.95rem;
 }
 
 /* Custom Submit Button */
@@ -507,13 +516,14 @@ const submitContactForm = async () => {
 }
 
 .info-card {
-  background: var(--card-bg, white);
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 161, 167, 0.08);
-  border: 1px solid rgba(0, 161, 167, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 161, 167, 0.12);
+  border: 1px solid rgba(0, 161, 167, 0.2);
   transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
 }
 
 .info-card:hover {
