@@ -35,52 +35,58 @@
 
               <div class="contact-form">
                 <div class="form-group">
-                  <label class="form-label">{{ $t("contact.emailLabel") }}</label>
+                  <label class="form-label">{{
+                    $t("contact.emailLabel")
+                  }}</label>
                   <v-text-field
                     v-model="formData.email"
                     type="email"
                     :placeholder="$t('contact.emailPlaceholder')"
-                    prepend-inner-icon="mdi-email"
                     clearable
-                    variant="outlined"
-                    density="comfortable"
+                    outlined
                     class="custom-text-field"
-                    hide-details="auto"
+                    hide-details
                     required
                   />
-                  <div v-if="emailError" class="form-error">{{ emailError }}</div>
+                  <div v-if="emailError" class="form-error">
+                    {{ emailError }}
+                  </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">{{ $t("contact.subjectLabel") }}</label>
-                  <v-select
+                  <label class="form-label">{{
+                    $t("contact.subjectLabel")
+                  }}</label>
+                  <select
                     v-model="formData.subject"
-                    :items="subjectOptions"
-                    item-title="title"
-                    item-value="value"
-                    :placeholder="$t('contact.subjectPlaceholder')"
-                    prepend-inner-icon="mdi-tag"
-                    clearable
-                    variant="outlined"
-                    density="comfortable"
-                    class="custom-select"
-                    hide-details="auto"
+                    class="form-select"
                     required
-                  />
+                  >
+                    <option value="" disabled>
+                      {{ $t("contact.subjectPlaceholder") }}
+                    </option>
+                    <option
+                      v-for="option in subjectOptions"
+                      :key="option.value"
+                      :value="option.value"
+                    >
+                      {{ option.title }}
+                    </option>
+                  </select>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label">{{ $t("contact.messageLabel") }}</label>
+                  <label class="form-label">{{
+                    $t("contact.messageLabel")
+                  }}</label>
                   <v-textarea
                     v-model="formData.message"
                     :placeholder="$t('contact.messagePlaceholder')"
-                    prepend-inner-icon="mdi-message-text"
                     clearable
-                    variant="outlined"
-                    density="comfortable"
+                    outlined
                     rows="6"
                     class="custom-textarea"
-                    hide-details="auto"
+                    hide-details
                     required
                   />
                 </div>
@@ -88,12 +94,10 @@
                 <v-btn
                   @click="submitContactForm"
                   color="#00a1a7"
-                  variant="elevated"
-                  size="large"
+                  large
                   class="custom-submit-btn"
                   :disabled="isSubmitting"
                   :loading="isSubmitting"
-                  prepend-icon="mdi-send"
                   block
                 >
                   {{
@@ -140,10 +144,7 @@
         </div>
       </div>
       <template v-slot:actions>
-        <v-btn
-          variant="text"
-          @click="showSuccessModal = false"
-        >
+        <v-btn variant="text" @click="showSuccessModal = false">
           {{ $t("contact.closeButton") }}
         </v-btn>
       </template>
@@ -175,20 +176,14 @@ const formData = ref({
 });
 
 // Subject options for select
-const subjectOptions = computed(() => [
-  { title: t("contact.subjects.general_feedback"), value: "GENERAL_FEEDBACK" },
-  { title: t("contact.subjects.suggestion"), value: "SUGGESTION" },
-  { title: t("contact.subjects.bug_report"), value: "BUG_REPORT" },
-  { title: t("contact.subjects.improvement"), value: "IMPROVEMENT" },
-  {
-    title: t("contact.subjects.partnership_request"),
-    value: "PARTNERSHIP_REQUEST",
-  },
-  {
-    title: t("contact.subjects.content_suggestion"),
-    value: "CONTENT_SUGGESTION",
-  },
-  { title: t("contact.subjects.other"), value: "OTHER" },
+const subjectOptions = ref([
+  { title: "Commentaires généraux", value: "GENERAL_FEEDBACK" },
+  { title: "Suggestion", value: "SUGGESTION" },
+  { title: "Rapport de bug", value: "BUG_REPORT" },
+  { title: "Amélioration", value: "IMPROVEMENT" },
+  { title: "Demande de partenariat", value: "PARTNERSHIP_REQUEST" },
+  { title: "Suggestion de contenu", value: "CONTENT_SUGGESTION" },
+  { title: "Autre", value: "OTHER" },
 ]);
 
 // Info cards data
@@ -304,7 +299,6 @@ const submitContactForm = async () => {
   overflow-x: hidden;
   background: #f8f9fa;
 }
-
 
 /* Hero Section */
 .hero-section {
@@ -430,6 +424,29 @@ const submitContactForm = async () => {
   color: #e74c3c;
   font-size: 0.85rem;
   margin-top: 5px;
+}
+
+.form-select {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #00a1a7;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #00a1a7;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
 }
 
 /* Custom Submit Button */
