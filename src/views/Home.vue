@@ -636,7 +636,7 @@ onUnmounted(() => {
 /* Features Section */
 .features-section {
   padding: 100px 20px;
-  background: var(--color-bg-primary);
+  background: #f8f9fa;
 }
 
 .container {
@@ -665,8 +665,8 @@ onUnmounted(() => {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 2px solid rgba(0, 161, 167, 0.2);
-  background: var(--card-bg);
-  color: var(--color-text-primary);
+  background: white;
+  color: #333;
 }
 
 .feature-card:hover {
@@ -683,12 +683,12 @@ onUnmounted(() => {
 .feature-card h3 {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #00a1a7;
   margin-bottom: 15px;
 }
 
 .feature-card p {
-  color: var(--color-text-secondary);
+  color: #666;
   line-height: 1.6;
 }
 
@@ -735,19 +735,19 @@ onUnmounted(() => {
 }
 
 .business-card {
-  background: var(--card-bg);
+  background: white;
   padding: 30px;
   border-radius: 20px;
   text-align: center;
   transition: all 0.3s ease;
-  border: 2px solid var(--color-border);
-  box-shadow: 0 4px 15px var(--shadow-primary);
+  border: 2px solid rgba(0, 161, 167, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 161, 167, 0.1);
 }
 
 .business-card:hover {
   transform: translateY(-5px);
-  border-color: var(--color-border-hover);
-  box-shadow: 0 15px 40px var(--shadow-hover);
+  border-color: #00a1a7;
+  box-shadow: 0 15px 40px rgba(0, 161, 167, 0.15);
 }
 
 .business-icon {
@@ -760,20 +760,20 @@ onUnmounted(() => {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 15px;
-  color: var(--color-primary);
+  color: #00a1a7;
 }
 
 .business-card p {
-  color: var(--color-text-secondary);
+  color: #666;
   line-height: 1.6;
 }
 
 .ebook-section {
-  background: var(--card-bg);
+  background: white;
   padding: 40px;
   border-radius: 25px;
   text-align: center;
-  border: 2px solid var(--color-border-hover);
+  border: 2px solid #00a1a7;
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0, 161, 167, 0.15);
@@ -810,12 +810,12 @@ onUnmounted(() => {
   margin-bottom: 15px;
   position: relative;
   z-index: 2;
-  color: var(--color-primary);
+  color: #00a1a7;
 }
 
 .ebook-description {
   margin-bottom: 25px;
-  color: var(--color-text-secondary);
+  color: #666;
   position: relative;
   z-index: 2;
 }
@@ -867,15 +867,15 @@ onUnmounted(() => {
 }
 
 .modal-content {
-  background: var(--modal-bg);
+  background: white;
   padding: 40px;
   border-radius: 20px;
   max-width: 800px;
   width: 90%;
   position: relative;
   animation: slideInScale 0.3s ease;
-  box-shadow: 0 20px 60px var(--shadow-hover);
-  border: 2px solid var(--color-border-hover);
+  box-shadow: 0 20px 60px rgba(0, 161, 167, 0.15);
+  border: 2px solid #00a1a7;
 }
 
 @keyframes slideInScale {
@@ -906,13 +906,13 @@ onUnmounted(() => {
 }
 
 .modal-content h3 {
-  color: var(--color-primary);
+  color: #00a1a7;
   margin-bottom: 15px;
   font-size: 1.5rem;
 }
 
 .modal-content p {
-  color: var(--color-text-secondary);
+  color: #666;
   margin-bottom: 25px;
   line-height: 1.6;
 }
@@ -944,12 +944,12 @@ onUnmounted(() => {
 
 .ebook-info h3 {
   font-size: 1.8rem;
-  color: var(--color-primary);
+  color: #00a1a7;
   margin: 0;
 }
 
 .ebook-info p {
-  color: var(--color-text-secondary);
+  color: #666;
   line-height: 1.6;
   margin: 0;
 }
@@ -1003,7 +1003,7 @@ onUnmounted(() => {
 
 .form-label {
   font-weight: 600;
-  color: var(--color-primary);
+  color: #00a1a7;
   font-size: 0.95rem;
 }
 
