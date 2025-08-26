@@ -326,16 +326,18 @@ const closeModal = () => {
   })
   .then(response => {
     if (response.ok) {
-      alert('Email envoyé avec succès !');
+      showSuccessModal.value = true;
       emailInput.value = '';
-      showEbookModal.value = false;
+      setTimeout(() => {
+        showEbookModal.value = false;
+      }, 2000);
     } else {
       throw new Error('Erreur réseau');
     }
   })
   .catch(error => {
     console.error('Error:', error);
-    alert('Erreur lors de l\'envoi');
+    showSnackbarWithMessage('Erreur lors de l\'envoi', 'error');
   })
   .finally(() => {
     submitBtn.disabled = false;
