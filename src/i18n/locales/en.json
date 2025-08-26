@@ -57,17 +57,22 @@
     },
     "ebookTitle": "🎁 Free Guide: \"The 7 Pillars of Halal Entrepreneurship\"",
     "ebookDescription": "Download our exclusive ebook and discover how to launch your business while respecting Islamic principles",
-    "ebookButton": "📚 Download Free"
+    "ebookButton": "📚 Download free"
   },
   "modal": {
-    "title": "📚 Download Free Ebook",
-    "description": "Enter your email to receive the guide \"The 7 Pillars of Halal Entrepreneurship\"",
-    "emailPlaceholder": "Your email address",
-    "submitButton": "📩 Send",
-    "submitting": "⏳ Sending...",
-    "privacyNote": "*We respect your privacy. No spam.",
-    "yopmailError": "Yopmail addresses are not accepted",
-    "successMessage": "Thank you! You will receive the ebook by email."
+    "title": "📚 Ebook Build and Baraka",
+    "description": "Discover the secrets of entrepreneurship in accordance with Islamic principles with our comprehensive guide.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "your.email@example.com",
+    "receiveButton": "Receive my ebook",
+    "sending": "Sending...",
+    "success": "Ebook sent! Check your mailbox 📧",
+    "error": "An error occurred. Please try again.",
+    "validation": {
+      "emailRequired": "Email address is required",
+      "emailInvalid": "Please enter a valid email address",
+      "emailSuspicious": "Please use a valid email address"
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions",

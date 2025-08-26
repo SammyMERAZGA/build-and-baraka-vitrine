@@ -35,7 +35,11 @@
         <div class="download-section">
           <p class="download-title">{{ $t("hero.downloadTitle") }}</p>
           <div class="store-buttons">
-            <a href="#" class="custom-store-button" @click.prevent="showSnackbar">
+            <a
+              href="#"
+              class="custom-store-button"
+              @click.prevent="showSnackbar"
+            >
               <img
                 src="@/assets/images/googleplay.png"
                 alt="Google Play"
@@ -43,7 +47,11 @@
               />
               <span class="store-text">{{ $t("hero.googlePlay") }}</span>
             </a>
-            <a href="#" class="custom-store-button" @click.prevent="showSnackbar">
+            <a
+              href="#"
+              class="custom-store-button"
+              @click.prevent="showSnackbar"
+            >
               <img
                 src="@/assets/images/applestore.png"
                 alt="App Store"
@@ -145,28 +153,46 @@
         <div class="modal-content" @click.stop>
           <button class="modal-close" @click="showEbookModal = false">×</button>
           <div class="ebook-preview">
-            <img 
-              src="@/assets/images/cover-ebook.jpg" 
+            <img
+              src="@/assets/images/cover-ebook.jpg"
               alt="Build and Baraka - Guide Entrepreneuriat Halal"
               class="ebook-cover"
             />
             <div class="ebook-info">
               <h3>{{ $t("modal.title") }}</h3>
               <p>{{ $t("modal.description") }}</p>
-              <a 
-                href="https://buildbaraka.com/pdf/ebook-buildandbaraka.pdf" 
-                download="Build-and-Baraka-Guide-Entrepreneuriat-Halal.pdf"
-                class="download-button"
-                @click="handleDownload"
-              >
-                📥 {{ $t("modal.downloadButton") }}
-              </a>
+
+              <div class="email-form">
+                <div class="form-group">
+                  <label for="email">{{ $t("modal.emailLabel") }}</label>
+                  <input
+                    id="email"
+                    v-model="email"
+                    type="email"
+                    :placeholder="$t('modal.emailPlaceholder')"
+                    class="email-input"
+                    :class="{ error: emailError }"
+                    @input="clearEmailError"
+                  />
+                  <div v-if="emailError" class="error-message">
+                    {{ emailError }}
+                  </div>
+                </div>
+
+                <button
+                  class="download-button"
+                  @click="handleEbookRequest"
+                  :disabled="isSubmitting"
+                >
+                  <span v-if="isSubmitting">⏳ {{ $t("modal.sending") }}</span>
+                  <span v-else>📧 {{ $t("modal.receiveButton") }}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
 
     <!-- Scroll to Top Button -->
     <button
@@ -182,7 +208,7 @@
 
     <!-- Footer -->
     <FooterComponent />
-    
+
     <!-- Snackbar -->
     <SnackbarComponent
       :visible="snackbarVisible"
@@ -196,6 +222,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
+import axios from "axios";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
@@ -206,10 +233,17 @@ const { t } = useI18n();
 const showEbookModal = ref(false);
 const showScrollToTop = ref(false);
 
+// Ebook form state
+const email = ref("");
+const emailError = ref("");
+const isSubmitting = ref(false);
+
 // Snackbar state
 const snackbarVisible = ref(false);
-const snackbarMessage = ref("En cours de développement, bientôt disponible insh'Allah");
-const snackbarType = ref<'info' | 'success' | 'warning' | 'error'>('info');
+const snackbarMessage = ref(
+  "En cours de développement, bientôt disponible insh'Allah"
+);
+const snackbarType = ref<"info" | "success" | "warning" | "error">("info");
 
 const handleScroll = () => {
   showScrollToTop.value = window.scrollY > 300;
@@ -222,11 +256,67 @@ const scrollToTop = () => {
   });
 };
 
-const handleDownload = () => {
-  showSnackbarWithMessage("Téléchargement commencé ! 📥", "success");
-  setTimeout(() => {
-    showEbookModal.value = false;
-  }, 1000);
+// Email validation
+const validateEmail = (email: string): string | null => {
+  if (!email) {
+    return t("modal.validation.emailRequired");
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    return t("modal.validation.emailInvalid");
+  }
+
+  // Check for suspicious domains
+  const suspiciousDomains = [
+    "yopmail",
+    "10minutemail",
+    "tempmail",
+    "guerrillamail",
+    "mailinator",
+  ];
+  const domain = email.split("@")[1]?.toLowerCase();
+  if (suspiciousDomains.some((suspicious) => domain?.includes(suspicious))) {
+    return t("modal.validation.emailSuspicious");
+  }
+
+  return null;
+};
+
+const clearEmailError = () => {
+  emailError.value = "";
+};
+
+const handleEbookRequest = async () => {
+  const validation = validateEmail(email.value);
+  if (validation) {
+    emailError.value = validation;
+    return;
+  }
+
+  isSubmitting.value = true;
+
+  try {
+    const response = await axios.post(
+      "https://core.buildbaraka.com/api/ebook-download",
+      {
+        email: email.value.toLowerCase(),
+      }
+    );
+
+    if (response.status === 200 || response.status === 201) {
+      showSnackbarWithMessage(t("modal.success"), "success");
+      email.value = "";
+      setTimeout(() => {
+        showEbookModal.value = false;
+      }, 2000);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    showSnackbarWithMessage(t("modal.error"), "error");
+  } finally {
+    isSubmitting.value = false;
+  }
 };
 
 // Snackbar functions
@@ -234,7 +324,10 @@ const showSnackbar = () => {
   snackbarVisible.value = true;
 };
 
-const showSnackbarWithMessage = (message: string, type: 'info' | 'success' | 'warning' | 'error' = 'info') => {
+const showSnackbarWithMessage = (
+  message: string,
+  type: "info" | "success" | "warning" | "error" = "info"
+) => {
   snackbarMessage.value = message;
   snackbarType.value = type;
   snackbarVisible.value = true;
@@ -868,6 +961,74 @@ onUnmounted(() => {
   box-shadow: 0 8px 25px rgba(0, 161, 167, 0.4);
 }
 
+.download-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.download-button:disabled:hover {
+  background: linear-gradient(135deg, #00a1a7, #008a8f);
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0, 161, 167, 0.3);
+}
+
+/* Email Form Styles */
+.email-form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 0.95rem;
+}
+
+.email-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--input-bg);
+  color: var(--color-text-primary);
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: #00a1a7;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
+}
+
+.email-input.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.privacy-note {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  margin-top: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
 /* Responsive Design for Ebook Modal */
 @media (max-width: 768px) {
   .ebook-preview {
@@ -883,7 +1044,7 @@ onUnmounted(() => {
   .ebook-info h3 {
     font-size: 1.5rem;
   }
-  
+
   .download-button {
     padding: 12px 20px;
     font-size: 1rem;

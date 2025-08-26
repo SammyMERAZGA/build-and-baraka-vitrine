@@ -57,12 +57,22 @@
     },
     "ebookTitle": "🎁 Guide gratuit : \"Entreprendre dans le numérique avec Baraka\"",
     "ebookDescription": "Téléchargez notre guide exclusif et découvrez comment créer votre business numérique en respectant les principes islamiques",
-    "ebookButton": "📚 Télécharger Gratuitement"
+    "ebookButton": "📚 Télécharger gratuitement"
   },
   "modal": {
     "title": "📚 Ebook Build and Baraka",
     "description": "Découvrez les secrets de l'entrepreneuriat conforme aux principes islamiques avec notre guide complet.",
-    "downloadButton": "Télécharger Gratuitement"
+    "emailLabel": "Adresse email",
+    "emailPlaceholder": "votre.email@exemple.com",
+    "receiveButton": "Recevoir mon ebook",
+    "sending": "Envoi en cours...",
+    "success": "Ebook envoyé ! Vérifiez votre boîte mail 📧",
+    "error": "Une erreur s'est produite. Veuillez réessayer.",
+    "validation": {
+      "emailRequired": "L'adresse email est obligatoire",
+      "emailInvalid": "Veuillez saisir une adresse email valide",
+      "emailSuspicious": "Veuillez utiliser une adresse email valide"
+    }
   },
   "footer": {
     "description": "Build and Baraka - L'application musulmane complète",
