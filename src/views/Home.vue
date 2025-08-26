@@ -144,14 +144,14 @@
         </div>
       </div>
 
-      <!-- Ebook Modal -->
+      <!-- Ebook Modal - Ultra Simple -->
       <div
         v-if="showEbookModal"
         class="modal-overlay"
-        @click="showEbookModal = false"
+        @click="closeModal"
       >
         <div class="modal-content" @click.stop>
-          <button class="modal-close" @click="showEbookModal = false">×</button>
+          <button class="modal-close" @click="closeModal">×</button>
           <div class="ebook-preview">
             <img
               src="@/assets/images/cover-ebook.jpg"
@@ -159,36 +159,33 @@
               class="ebook-cover"
             />
             <div class="ebook-info">
-              <h3>{{ $t("modal.title") }}</h3>
-              <p>{{ $t("modal.description") }}</p>
+              <h3>Guide Entrepreneuriat Halal</h3>
+              <p>Découvrez les clés pour entreprendre dans le respect des valeurs islamiques</p>
 
-              <form @submit.prevent="submitEbookForm" class="email-form">
+              <div class="email-form">
                 <div class="form-group">
-                  <label class="form-label">{{ $t('modal.emailLabel') }}</label>
+                  <label class="form-label">Email</label>
                   <input
-                    v-model="formData.email"
                     type="email"
-                    :placeholder="$t('modal.emailPlaceholder')"
+                    placeholder="Votre email"
                     class="form-input"
+                    id="ebookEmail"
                     required
                   />
-                  <div v-if="emailError" class="form-error">
-                    {{ emailError }}
+                  <div class="form-error" id="emailError" style="display: none;">
+                    Email requis
                   </div>
                 </div>
 
                 <button
-                  type="submit"
+                  type="button"
                   class="submit-button"
-                  :disabled="isSubmitting"
+                  id="submitBtn"
+                  onclick="submitEbook()"
                 >
-                  {{
-                    isSubmitting
-                      ? $t("modal.sending")
-                      : $t("modal.receiveButton")
-                  }}
+                  Télécharger gratuitement
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -315,45 +312,63 @@ const validateEmail = (email: string): boolean => {
   return true;
 };
 
-const submitEbookForm = () => {
-  if (!formData.value.email) {
-    emailError.value = t("modal.validation.emailRequired");
+const closeModal = () => {
+  showEbookModal.value = false;
+};
+
+// Fonction JavaScript pure pour le submit
+window.submitEbook = () => {
+  const emailInput = document.getElementById('ebookEmail');
+  const errorDiv = document.getElementById('emailError');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  const email = emailInput.value.trim();
+  
+  // Reset error
+  errorDiv.style.display = 'none';
+  
+  if (!email) {
+    errorDiv.textContent = 'Email requis';
+    errorDiv.style.display = 'block';
     return;
   }
-
-  if (!validateEmail(formData.value.email)) {
+  
+  if (!email.includes('@') || !email.includes('.')) {
+    errorDiv.textContent = 'Email invalide';
+    errorDiv.style.display = 'block';
     return;
   }
-
-  isSubmitting.value = true;
-
+  
+  // Loading state
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Envoi en cours...';
+  
   fetch("https://core.buildbaraka.com/api/ebook-download", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: formData.value.email.toLowerCase(),
+      email: email.toLowerCase(),
     }),
   })
-    .then((response) => {
-      if (response.ok) {
-        showSuccessModal.value = true;
-        formData.value.email = "";
-        setTimeout(() => {
-          showEbookModal.value = false;
-        }, 2000);
-      } else {
-        throw new Error("Network response was not ok");
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      showSnackbarWithMessage(t("modal.error"), "error");
-    })
-    .finally(() => {
-      isSubmitting.value = false;
-    });
+  .then(response => {
+    if (response.ok) {
+      alert('Email envoyé avec succès !');
+      emailInput.value = '';
+      showEbookModal.value = false;
+    } else {
+      throw new Error('Erreur réseau');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Erreur lors de l\'envoi');
+  })
+  .finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Télécharger gratuitement';
+  });
 };
 
 // Snackbar functions
