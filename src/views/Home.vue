@@ -252,6 +252,8 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
 import SnackbarComponent from "@/components/SnackbarComponent.vue";
+// Vuetify components explicit import for production compatibility
+import { VTextField, VBtn, VSnackbar, VIcon } from 'vuetify/components';
 
 const { t } = useI18n();
 
