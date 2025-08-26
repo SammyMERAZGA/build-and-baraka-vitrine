@@ -283,9 +283,7 @@
       "emailRequired": "Email address is required",
       "emailValid": "Email address must be valid"
     }
-  }
-}
-,
+  },
   "legalNotice": {
     "title": "Legal Notice",
     "subtitle": "Legal information about Build and Baraka",
@@ -349,3 +347,4 @@
       "content": "If you have questions about our use of cookies, please contact us via our contact form."
     }
   }
+}
