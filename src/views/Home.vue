@@ -242,7 +242,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
 import { useI18n } from "vue-i18n";
-import axios from "axios";
 import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
@@ -256,13 +255,10 @@ const showEbookModal = ref(false);
 const showScrollToTop = ref(false);
 const showSuccessModal = ref(false);
 
-// Ebook form state
-const isSubmitting = ref(false);
-const emailError = ref("");
-
-const formData = ref({
-  email: "",
-});
+// Ces variables ne sont plus utilisées car le formulaire utilise du JavaScript pur
+// const isSubmitting = ref(false);
+// const emailError = ref("");
+// const formData = ref({ email: "" });
 
 // Snackbar state
 const snackbarVisible = ref(false);
@@ -282,45 +278,21 @@ const scrollToTop = () => {
   });
 };
 
-const clearEmailError = () => {
-  emailError.value = "";
-};
-
-// Email validation function
-const validateEmail = (email: string): boolean => {
-  const emailRegex = /.+@.+\..+/;
-  if (!emailRegex.test(email)) {
-    emailError.value = t("modal.validation.emailInvalid");
-    return false;
-  }
-
-  // Check for suspicious domains
-  const suspiciousDomains = [
-    "yopmail",
-    "10minutemail",
-    "tempmail",
-    "guerrillamail",
-    "mailinator",
-  ];
-  const domain = email.split("@")[1]?.toLowerCase();
-  if (suspiciousDomains.some((suspicious) => domain?.includes(suspicious))) {
-    emailError.value = t("modal.validation.emailSuspicious");
-    return false;
-  }
-
-  emailError.value = "";
-  return true;
-};
+// Ces fonctions ne sont plus utilisées car le formulaire utilise du JavaScript pur
+// const clearEmailError = () => { emailError.value = ""; };
+// const validateEmail = (email: string): boolean => { ... }
 
 const closeModal = () => {
   showEbookModal.value = false;
 };
 
-// Fonction JavaScript pure pour le submit
-window.submitEbook = () => {
-  const emailInput = document.getElementById('ebookEmail');
-  const errorDiv = document.getElementById('emailError');
-  const submitBtn = document.getElementById('submitBtn');
+// Fonction JavaScript pure pour le submit avec types corrects
+(window as any).submitEbook = () => {
+  const emailInput = document.getElementById('ebookEmail') as HTMLInputElement;
+  const errorDiv = document.getElementById('emailError') as HTMLDivElement;
+  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+  
+  if (!emailInput || !errorDiv || !submitBtn) return;
   
   const email = emailInput.value.trim();
   
