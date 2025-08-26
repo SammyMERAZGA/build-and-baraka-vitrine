@@ -162,11 +162,11 @@
               <h3>{{ $t("modal.title") }}</h3>
               <p>{{ $t("modal.description") }}</p>
 
-              <form @submit.prevent="handleEbookRequest" class="email-form">
+              <form @submit.prevent="submitEbookForm" class="email-form">
                 <div class="form-group">
                   <label class="form-label">{{ $t("modal.emailLabel") }}</label>
                   <input
-                    v-model="email"
+                    v-model="formData.email"
                     type="email"
                     :placeholder="$t('modal.emailPlaceholder')"
                     class="form-input"
@@ -182,8 +182,11 @@
                   class="submit-button"
                   :disabled="isSubmitting"
                 >
-                  <span v-if="isSubmitting">⏳ {{ $t("modal.sending") }}</span>
-                  <span v-else>📧 {{ $t("modal.receiveButton") }}</span>
+                  {{
+                    isSubmitting
+                      ? $t("modal.sending")
+                      : $t("modal.receiveButton")
+                  }}
                 </button>
               </form>
             </div>
@@ -232,9 +235,12 @@ const showEbookModal = ref(false);
 const showScrollToTop = ref(false);
 
 // Ebook form state
-const email = ref("");
-const emailError = ref("");
 const isSubmitting = ref(false);
+const emailError = ref("");
+
+const formData = ref({
+  email: "",
+});
 
 // Snackbar state
 const snackbarVisible = ref(false);
@@ -284,13 +290,13 @@ const validateEmail = (email: string): boolean => {
   return true;
 };
 
-const handleEbookRequest = () => {
-  if (!email.value) {
+const submitEbookForm = () => {
+  if (!formData.value.email) {
     emailError.value = t("modal.validation.emailRequired");
     return;
   }
 
-  if (!validateEmail(email.value)) {
+  if (!validateEmail(formData.value.email)) {
     return;
   }
 
@@ -302,13 +308,13 @@ const handleEbookRequest = () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: email.value.toLowerCase(),
+      email: formData.value.email.toLowerCase(),
     }),
   })
     .then((response) => {
       if (response.ok) {
         showSnackbarWithMessage(t("modal.success"), "success");
-        email.value = "";
+        formData.value.email = "";
         setTimeout(() => {
           showEbookModal.value = false;
         }, 2000);
