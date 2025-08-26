@@ -163,25 +163,23 @@
               <p>{{ $t("modal.description") }}</p>
 
               <form @submit.prevent="submitEbookForm" class="email-form">
-                <v-text-field
-                  v-model="formData.email"
-                  type="email"
-                  :label="$t('modal.emailLabel')"
-                  :placeholder="$t('modal.emailPlaceholder')"
-                  prepend-inner-icon="mdi-email"
-                  variant="outlined"
-                  class="custom-text-field"
-                  :error-messages="emailError"
-                  required
-                ></v-text-field>
+                <div class="form-group">
+                  <label class="form-label">{{ $t('modal.emailLabel') }}</label>
+                  <input
+                    v-model="formData.email"
+                    type="email"
+                    :placeholder="$t('modal.emailPlaceholder')"
+                    class="form-input"
+                    required
+                  />
+                  <div v-if="emailError" class="form-error">
+                    {{ emailError }}
+                  </div>
+                </div>
 
-                <v-btn
+                <button
                   type="submit"
-                  color="#00a1a7"
-                  size="large"
-                  block
-                  class="custom-submit-btn"
-                  :loading="isSubmitting"
+                  class="submit-button"
                   :disabled="isSubmitting"
                 >
                   {{
@@ -189,7 +187,7 @@
                       ? $t("modal.sending")
                       : $t("modal.receiveButton")
                   }}
-                </v-btn>
+                </button>
               </form>
             </div>
           </div>
@@ -252,8 +250,8 @@ import NavbarComponent from "@/components/NavbarComponent.vue";
 import FooterComponent from "@/components/FooterComponent.vue";
 import LanguageSelector from "@/components/LanguageSelector.vue";
 import SnackbarComponent from "@/components/SnackbarComponent.vue";
-// Vuetify components explicit import for production compatibility
-import { VTextField, VBtn, VSnackbar, VIcon } from 'vuetify/components';
+// Vuetify components for success snackbar only
+import { VSnackbar, VIcon, VBtn } from 'vuetify/components';
 
 const { t } = useI18n();
 
@@ -1021,69 +1019,68 @@ onUnmounted(() => {
   gap: 20px;
 }
 
-/* Custom Vuetify Components Styling */
-.custom-text-field :deep(.v-field) {
-  border: 2px solid #00a1a7 !important;
-  border-radius: 12px !important;
-  background: white !important;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #00a1a7;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: white;
+  color: #333;
   font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
 }
 
-.custom-text-field :deep(.v-field__input) {
-  padding: 15px 50px 15px 50px !important;
-  font-size: 1rem !important;
-  color: #333 !important;
-  min-height: 50px !important;
+.form-input:focus {
+  outline: none;
+  border-color: #00a1a7;
+  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
 }
 
-.custom-text-field :deep(.v-field--focused) {
-  border-color: #00a1a7 !important;
-  box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1) !important;
+.form-error {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
 }
 
-.custom-text-field :deep(.v-field__prepend-inner) {
-  padding-left: 15px !important;
+.submit-button {
+  background: #00a1a7;
+  color: white;
+  border: none;
+  padding: 18px 30px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  transition: all 0.3s ease;
 }
 
-.custom-text-field :deep(.v-field__prepend-inner .v-icon) {
-  color: #999 !important;
+.submit-button:hover:not(:disabled) {
+  background: #008a8f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 161, 167, 0.3);
 }
 
-.custom-text-field :deep(.v-field__append-inner) {
-  padding-right: 15px !important;
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-/* Hide default Vuetify input styles that conflict */
-.custom-text-field :deep(.v-field__outline) {
-  display: none !important;
-}
-
-.custom-text-field :deep(.v-input__details) {
-  padding-top: 8px !important;
-  padding-left: 0 !important;
-}
-
-.custom-text-field :deep(.v-messages__message) {
-  color: #e74c3c !important;
-  font-size: 0.85rem !important;
-}
-
-/* Custom Submit Button */
-.custom-submit-btn {
-  font-family: "Poppins", sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 1.1rem !important;
-  border-radius: 12px !important;
-  padding: 18px 30px !important;
-  margin-top: 20px !important;
-  text-transform: none !important;
-  transition: all 0.3s ease !important;
-}
-
-.custom-submit-btn:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 10px 30px rgba(0, 161, 167, 0.3) !important;
-}
 
 /* Custom Snackbar Styling */
 .custom-snackbar :deep(.v-snackbar__wrapper) {
@@ -1146,28 +1143,6 @@ onUnmounted(() => {
   }
 }
 
-.submit-button {
-  background: #00a1a7;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.submit-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 161, 167, 0.3);
-  background: #008a8f;
-}
-
-.submit-button:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
 
 .privacy-note {
   font-size: 0.9rem;
