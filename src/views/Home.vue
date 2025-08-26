@@ -162,32 +162,30 @@
               <h3>{{ $t("modal.title") }}</h3>
               <p>{{ $t("modal.description") }}</p>
 
-              <div class="email-form">
+              <form @submit.prevent="handleEbookRequest" class="email-form">
                 <div class="form-group">
-                  <label for="email">{{ $t("modal.emailLabel") }}</label>
+                  <label class="form-label">{{ $t("modal.emailLabel") }}</label>
                   <input
-                    id="email"
                     v-model="email"
                     type="email"
                     :placeholder="$t('modal.emailPlaceholder')"
-                    class="email-input"
-                    :class="{ error: emailError }"
-                    @input="clearEmailError"
+                    class="form-input"
+                    required
                   />
-                  <div v-if="emailError" class="error-message">
+                  <div v-if="emailError" class="form-error">
                     {{ emailError }}
                   </div>
                 </div>
 
                 <button
-                  class="download-button"
-                  @click="handleEbookRequest"
+                  type="submit"
+                  class="submit-button"
                   :disabled="isSubmitting"
                 >
                   <span v-if="isSubmitting">⏳ {{ $t("modal.sending") }}</span>
                   <span v-else>📧 {{ $t("modal.receiveButton") }}</span>
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -256,15 +254,16 @@ const scrollToTop = () => {
   });
 };
 
-// Email validation
-const validateEmail = (email: string): string | null => {
-  if (!email) {
-    return t("modal.validation.emailRequired");
-  }
+const clearEmailError = () => {
+  emailError.value = "";
+};
 
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Email validation function
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /.+@.+\..+/;
   if (!emailRegex.test(email)) {
-    return t("modal.validation.emailInvalid");
+    emailError.value = t("modal.validation.emailInvalid");
+    return false;
   }
 
   // Check for suspicious domains
@@ -277,46 +276,53 @@ const validateEmail = (email: string): string | null => {
   ];
   const domain = email.split("@")[1]?.toLowerCase();
   if (suspiciousDomains.some((suspicious) => domain?.includes(suspicious))) {
-    return t("modal.validation.emailSuspicious");
+    emailError.value = t("modal.validation.emailSuspicious");
+    return false;
   }
 
-  return null;
-};
-
-const clearEmailError = () => {
   emailError.value = "";
+  return true;
 };
 
-const handleEbookRequest = async () => {
-  const validation = validateEmail(email.value);
-  if (validation) {
-    emailError.value = validation;
+const handleEbookRequest = () => {
+  if (!email.value) {
+    emailError.value = t("modal.validation.emailRequired");
+    return;
+  }
+
+  if (!validateEmail(email.value)) {
     return;
   }
 
   isSubmitting.value = true;
 
-  try {
-    const response = await axios.post(
-      "https://core.buildbaraka.com/api/ebook-download",
-      {
-        email: email.value.toLowerCase(),
+  fetch("https://core.buildbaraka.com/api/ebook-download", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value.toLowerCase(),
+    }),
+  })
+    .then((response) => {
+      if (response.ok) {
+        showSnackbarWithMessage(t("modal.success"), "success");
+        email.value = "";
+        setTimeout(() => {
+          showEbookModal.value = false;
+        }, 2000);
+      } else {
+        throw new Error("Network response was not ok");
       }
-    );
-
-    if (response.status === 200 || response.status === 201) {
-      showSnackbarWithMessage(t("modal.success"), "success");
-      email.value = "";
-      setTimeout(() => {
-        showEbookModal.value = false;
-      }, 2000);
-    }
-  } catch (error) {
-    console.error("Error:", error);
-    showSnackbarWithMessage(t("modal.error"), "error");
-  } finally {
-    isSubmitting.value = false;
-  }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      showSnackbarWithMessage(t("modal.error"), "error");
+    })
+    .finally(() => {
+      isSubmitting.value = false;
+    });
 };
 
 // Snackbar functions
@@ -977,56 +983,78 @@ onUnmounted(() => {
 .email-form {
   width: 100%;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   text-align: left;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
+.form-label {
   font-weight: 600;
   color: var(--color-primary);
   font-size: 0.95rem;
 }
 
-.email-input {
+.form-input {
   width: 100%;
-  padding: 12px 16px;
-  border: 2px solid var(--color-border);
-  border-radius: 10px;
+  padding: 15px;
+  border: 2px solid #00a1a7;
+  border-radius: 12px;
   font-size: 1rem;
+  background: white;
+  color: #333;
+  font-family: "Poppins", sans-serif;
   transition: all 0.3s ease;
-  background: var(--input-bg);
-  color: var(--color-text-primary);
 }
 
-.email-input:focus {
+.form-input:focus {
   outline: none;
   border-color: #00a1a7;
   box-shadow: 0 0 0 3px rgba(0, 161, 167, 0.1);
 }
 
-.email-input.error {
-  border-color: #e74c3c;
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
-}
-
-.error-message {
+.form-error {
   color: #e74c3c;
   font-size: 0.85rem;
   margin-top: 5px;
-  font-weight: 500;
 }
 
-.privacy-note {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  margin-top: 15px;
-  line-height: 1.4;
-  text-align: center;
+.submit-button {
+  background: #00a1a7;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 161, 167, 0.3);
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #008a8f;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 161, 167, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-button:disabled:hover {
+  background: #00a1a7;
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0, 161, 167, 0.3);
 }
 
 /* Responsive Design for Ebook Modal */

@@ -76,7 +76,9 @@
   },
   "footer": {
     "description": "Build and Baraka - L'application musulmane complète",
-    "copyright": "© 2025 Build and Baraka. Tous droits réservés."
+    "copyright": "© 2025 Build and Baraka. Tous droits réservés.",
+    "legalNotice": "Mentions légales",
+    "cookiePolicy": "Politique de cookies"
   },
   "scrollToTop": "Retour en haut",
   "featuresPage": {
@@ -282,5 +284,68 @@
     "homeButton": "Retour à l'accueil",
     "backButton": "Page précédente",
     "socialText": "Suivez-nous sur nos réseaux sociaux :"
+  },
+  "legalNotice": {
+    "title": "Mentions légales",
+    "subtitle": "Informations légales concernant Build and Baraka",
+    "editor": {
+      "title": "Éditeur du site",
+      "content": "Ce site est édité par Build and Baraka, une application mobile dédiée aux musulmans. Pour toute question concernant l'application ou ce site, vous pouvez nous contacter via notre page de contact."
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "content": "Ce site est hébergé par des services cloud sécurisés garantissant une disponibilité optimale et la protection de vos données."
+    },
+    "intellectual": {
+      "title": "Propriété intellectuelle",
+      "content": "L'ensemble des contenus présents sur ce site (textes, images, logos, icônes) sont la propriété exclusive de Build and Baraka, sauf mention contraire. Toute reproduction, même partielle, est interdite sans autorisation préalable."
+    },
+    "responsibility": {
+      "title": "Responsabilité",
+      "content": "Build and Baraka s'efforce de fournir des informations exactes et à jour. Cependant, nous ne pouvons garantir l'exactitude, la complétude ou l'actualité des informations diffusées sur ce site."
+    },
+    "data": {
+      "title": "Données personnelles",
+      "content": "Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Les données collectées via les formulaires de contact sont utilisées uniquement pour répondre à vos demandes."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "Pour toute question relative aux mentions légales ou à l'utilisation de ce site, vous pouvez nous contacter via notre formulaire de contact disponible sur le site."
+    }
+  },
+  "cookiePolicy": {
+    "title": "Politique de cookies",
+    "subtitle": "Comment nous utilisons les cookies sur notre site",
+    "what": {
+      "title": "Qu'est-ce qu'un cookie ?",
+      "content": "Un cookie est un petit fichier texte stocké sur votre appareil lorsque vous visitez un site web. Les cookies nous aident à améliorer votre expérience de navigation et à comprendre comment vous utilisez notre site."
+    },
+    "usage": {
+      "title": "Notre utilisation des cookies",
+      "content": "Build and Baraka utilise très peu de cookies. Nous privilégions une approche respectueuse de votre vie privée et ne collectons que les données strictement nécessaires au fonctionnement optimal de notre site."
+    },
+    "types": {
+      "title": "Types de cookies utilisés",
+      "essential": {
+        "title": "Cookies essentiels",
+        "content": "Ces cookies sont nécessaires au fonctionnement de base du site, comme la mémorisation de votre langue préférée. Ils ne peuvent pas être désactivés."
+      },
+      "analytics": {
+        "title": "Cookies d'analyse (optionnels)",
+        "content": "Nous pourrions utiliser des cookies d'analyse pour comprendre comment les visiteurs interagissent avec notre site, mais uniquement avec votre consentement explicite."
+      }
+    },
+    "control": {
+      "title": "Contrôle des cookies",
+      "content": "Vous pouvez contrôler et supprimer les cookies via les paramètres de votre navigateur. Notez que la désactivation de certains cookies peut affecter le fonctionnement du site."
+    },
+    "updates": {
+      "title": "Mises à jour de cette politique",
+      "content": "Cette politique de cookies peut être mise à jour occasionnellement. Nous vous encourageons à la consulter régulièrement pour rester informé de nos pratiques."
+    },
+    "contact": {
+      "title": "Nous contacter",
+      "content": "Si vous avez des questions concernant notre utilisation des cookies, n'hésitez pas à nous contacter via notre formulaire de contact."
+    }
   }
 }

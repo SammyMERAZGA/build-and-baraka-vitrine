@@ -105,7 +105,9 @@
   },
   "footer": {
     "description": "Build and Baraka - The complete Muslim application",
-    "copyright": "© 2025 Build and Baraka. All rights reserved."
+    "copyright": "© 2025 Build and Baraka. All rights reserved.",
+    "legalNotice": "Legal Notice",
+    "cookiePolicy": "Cookie Policy"
   },
   "scrollToTop": "Back to top",
   "theme": {
@@ -283,3 +285,67 @@
     }
   }
 }
+,
+  "legalNotice": {
+    "title": "Legal Notice",
+    "subtitle": "Legal information about Build and Baraka",
+    "editor": {
+      "title": "Site Editor",
+      "content": "This site is published by Build and Baraka, a mobile application dedicated to Muslims. For any questions about the application or this site, you can contact us via our contact page."
+    },
+    "hosting": {
+      "title": "Hosting",
+      "content": "This site is hosted by secure cloud services ensuring optimal availability and protection of your data."
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "content": "All content on this site (texts, images, logos, icons) are the exclusive property of Build and Baraka, unless otherwise stated. Any reproduction, even partial, is prohibited without prior authorization."
+    },
+    "responsibility": {
+      "title": "Responsibility",
+      "content": "Build and Baraka strives to provide accurate and up-to-date information. However, we cannot guarantee the accuracy, completeness or timeliness of information published on this site."
+    },
+    "data": {
+      "title": "Personal Data",
+      "content": "In accordance with GDPR, you have the right to access, rectify and delete data concerning you. Data collected via contact forms is used only to respond to your requests."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "For any questions regarding the legal notice or use of this site, you can contact us via our contact form available on the site."
+    }
+  },
+  "cookiePolicy": {
+    "title": "Cookie Policy",
+    "subtitle": "How we use cookies on our site",
+    "what": {
+      "title": "What is a cookie?",
+      "content": "A cookie is a small text file stored on your device when you visit a website. Cookies help us improve your browsing experience and understand how you use our site."
+    },
+    "usage": {
+      "title": "Our use of cookies",
+      "content": "Build and Baraka uses very few cookies. We favor an approach that respects your privacy and only collect data strictly necessary for optimal site operation."
+    },
+    "types": {
+      "title": "Types of cookies used",
+      "essential": {
+        "title": "Essential cookies",
+        "content": "These cookies are necessary for basic site operation, such as remembering your preferred language. They cannot be disabled."
+      },
+      "analytics": {
+        "title": "Analytics cookies (optional)",
+        "content": "We might use analytics cookies to understand how visitors interact with our site, but only with your explicit consent."
+      }
+    },
+    "control": {
+      "title": "Cookie control",
+      "content": "You can control and delete cookies via your browser settings. Note that disabling certain cookies may affect site functionality."
+    },
+    "updates": {
+      "title": "Updates to this policy",
+      "content": "This cookie policy may be updated occasionally. We encourage you to review it regularly to stay informed of our practices."
+    },
+    "contact": {
+      "title": "Contact us",
+      "content": "If you have questions about our use of cookies, please contact us via our contact form."
+    }
+  }
